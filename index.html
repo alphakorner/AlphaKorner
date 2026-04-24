@@ -655,8 +655,9 @@ body::before{
 .hero-h1 em{font-style:normal;color:var(--green)}
 
 .hero-sub{
-  font-size:18px;width:90%;color:var(--gray);line-height:1.55;
-  text-align:center;font-weight:400;letter-spacing:-0.6px;
+  font-size:clamp(16px,2.2vw,18px);width:min(600px,90%);color:var(--gray);line-height:1.6;
+  text-align:center;font-weight:400;letter-spacing:-0.4px;
+  word-break:keep-all;overflow-wrap:break-word;
 }
 
 /* Hero CTA button (glowing pill) */
@@ -2744,7 +2745,7 @@ body::before{
         <h1 class="hero-h1">
           Du code qui<br><em>change votre métier.</em>
         </h1>
-        <p class="hero-sub">Alpha Korner conçoit des logiciels sur mesure, applications web et solutions d'automatisation pour entreprises. Résultats rapides, interface soignée.</p>
+        <p class="hero-sub">Alpha Korner conçoit des logiciels sur mesure, applications web et solutions d'automatisation pour entreprises — résultats rapides, interface&nbsp;soignée.</p>
       </div>
 
       <button class="hero-btn" onclick="openCallModal()">
@@ -4603,4 +4604,4 @@ document.addEventListener('keydown', function(e) {
 </div>
 <!-- FIN CONTENU SEO ══════════════════════════════════════ -->
 </body>
-</html>
+     </html>
