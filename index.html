@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr" prefix="og: https://ogp.me/ns#">
 <head>
@@ -671,7 +672,7 @@ body::before{
   box-shadow:0 0 0 1px rgba(52,209,108,0.45),0 0 0 3px rgba(52,209,108,0.09),0 4px 20px rgba(52,209,108,0.14),0 32px 64px rgba(52,209,108,0.08);
   column-gap:14px;border:none;
   transition:transform 0.25s cubic-bezier(0.22,1,0.36,1),box-shadow 0.25s ease;
-  animation:glow-border 1.8s ease-in-out infinite,blur-fade-in .8s cubic-bezier(0.22,1,0.36,1) .2s both;
+  animation:blur-fade-in .8s cubic-bezier(0.22,1,0.36,1) .2s both;
   position:relative;overflow:visible;
 }
 .hero-btn::before{
@@ -3262,11 +3263,11 @@ body {
 
 /* Audit Hero */
 .audit-hero-section {
-  padding:clamp(100px,16vw,140px) var(--gutter) 56px;
+  padding:clamp(90px,14vw,130px) var(--gutter) 48px;
   text-align:center;
   position:relative;overflow:hidden;
   background:linear-gradient(180deg,#050507 0%,#080810 100%);
-  max-width:860px;margin:0 auto;
+  max-width:100%;margin:0 auto;
 }
 .audit-hero-section::before {
   content:'';position:absolute;inset:0;
@@ -3281,19 +3282,36 @@ body {
 .audit-tag .adot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 .audit-tag span{font-size:11px;font-weight:700;color:var(--green);letter-spacing:0.8px;text-transform:uppercase}
 .audit-h1 {
-  font-size:clamp(26px,5.5vw,50px);font-weight:800;color:white;
-  letter-spacing:-1.5px;line-height:1.12;margin-bottom:16px;position:relative;z-index:1;
+  font-size: clamp(18px, 4vw, 38px);
+  font-weight: 800; color: white;
+  letter-spacing: -1px; line-height: 1.18;
+  margin-bottom: 16px; position: relative; z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+}
+/* Fallback pour petits écrans : retour à wrap automatique sous 420px */
+@media (max-width: 420px) {
+  .audit-h1 {
+    white-space: normal;
+    font-size: clamp(16px, 5.5vw, 24px);
+    letter-spacing: -0.5px;
+  }
 }
 .audit-h1 em {
-  font-style:normal;
-  background:linear-gradient(90deg,#34D16C,#5fffaa,#34D16C);
-  background-size:200% auto;-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
-  animation:text-gradient-move 3s linear infinite;
+  font-style: normal;
+  background: linear-gradient(90deg,#34D16C,#5fffaa,#34D16C);
+  background-size: 200% auto; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  animation: text-gradient-move 3s linear infinite;
 }
 .audit-h1-sub {
-  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
-  max-width:540px;margin:0 auto 40px;position:relative;z-index:1;
+  font-size: clamp(12px, 2vw, 15px); color: rgba(255,255,255,0.85);
+  line-height: 1.65; max-width: 560px;
+  margin: 0 auto 36px; position: relative; z-index: 1;
+  text-wrap: balance;
 }
 
 /* Form card */
@@ -3308,14 +3326,14 @@ body {
   pointer-events:none;
 }
 .afield { display:flex;flex-direction:column;gap:6px;margin-bottom:18px;position:relative;z-index:1; }
-.afield-label { font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.7px; }
+.afield-label { font-size:12px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:0.7px; }
 .afield-input {
   width:100%;padding:13px 18px;
   background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);
   border-radius:12px;font-size:14px;font-family:inherit;color:white;
   outline:none;transition:border-color .3s,box-shadow .3s,background .3s;
 }
-.afield-input::placeholder{color:rgba(255,255,255,0.20)}
+.afield-input::placeholder{color:rgba(255,255,255,0.38)}
 .afield-input:focus {
   border-color:rgba(52,209,108,0.5);background:rgba(52,209,108,0.04);
   box-shadow:0 0 0 3px rgba(52,209,108,0.10),0 0 20px rgba(52,209,108,0.08);
@@ -3330,7 +3348,19 @@ body {
 }
 .asubmit-btn:hover{transform:scale(1.02) translateY(-2px);box-shadow:0 8px 36px rgba(52,209,108,0.50)}
 .asubmit-btn:active{transform:scale(0.98)}
-.argpd{text-align:center;margin-top:18px;font-size:11px;color:rgba(255,255,255,0.2);position:relative;z-index:1}
+.argpd{display:none}
+.argpd-new{
+  margin-top:20px;display:flex;flex-direction:column;gap:8px;
+  align-items:center;position:relative;z-index:1;
+}
+.argpd-row{
+  display:flex;align-items:center;gap:8px;
+}
+.argpd-icon{font-size:14px;line-height:1;flex-shrink:0}
+.argpd-line{
+  font-size:12px;font-weight:600;color:#ffffff;
+  letter-spacing:0.1px;
+}
 
 /* Loading */
 .aloading{display:none;text-align:center;padding:32px 24px;position:relative;z-index:1}
@@ -3348,7 +3378,7 @@ body {
 /* Results */
 .aresult{display:none;position:relative;z-index:1;margin-top:28px}
 .aresult.visible{display:block}
-.asource-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.25);margin-bottom:20px}
+.asource-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.75);margin-bottom:20px}
 .asource-badge svg{opacity:.4}
 
 /* Score ring */
@@ -3371,7 +3401,7 @@ body {
 .aring-num{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
 .aring-label{font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
 .aglobal-title{font-size:17px;font-weight:700;color:white;margin-bottom:6px;position:relative;z-index:1}
-.aglobal-sub{font-size:13px;color:rgba(255,255,255,0.45);position:relative;z-index:1}
+.aglobal-sub{font-size:13px;color:rgba(255,255,255,0.8);position:relative;z-index:1}
 
 /* Score items */
 .ascores-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
@@ -3400,8 +3430,8 @@ body {
 
 /* CTA block */
 .acta-block{background:rgba(52,209,108,0.08);border:1px solid rgba(52,209,108,0.25);border-radius:18px;padding:24px 20px;text-align:center}
-.acta-block h3{font-size:18px;font-weight:700;color:white;margin-bottom:8px}
-.acta-block p{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;line-height:1.6}
+.acta-block h3{font-size:clamp(15px,2.5vw,18px);font-weight:700;color:white;margin-bottom:8px;text-wrap:balance}
+.acta-block p{font-size:12.5px;color:rgba(255,255,255,0.85);margin-bottom:20px;line-height:1.6;text-wrap:balance}
 .acta-btn {
   display:inline-flex;align-items:center;gap:8px;background:var(--green);color:white;
   border-radius:999px;padding:13px 28px;font-size:14px;font-weight:700;font-family:inherit;
@@ -3419,18 +3449,370 @@ body {
 
 /* How it works */
 .ahow-wrap{max-width:640px;margin:0 auto;padding:0 var(--gutter) 32px}
-.ahow-title{font-size:12px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:16px;text-align:center}
+.ahow-title{font-size:13px;font-weight:800;color:#ffffff;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:16px;text-align:center}
 .ahow-steps{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .ahow-step{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:14px 16px;flex:1;min-width:140px;max-width:200px}
 .ahow-num{width:24px;height:24px;border-radius:50%;background:rgba(52,209,108,0.15);color:var(--green);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ahow-text{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5}
-.ahow-text strong{color:rgba(255,255,255,0.75);display:block;margin-bottom:2px;font-size:13px}
+.ahow-text{font-size:12px;color:#ffffff;line-height:1.5}
+.ahow-text strong{color:#ffffff;display:block;margin-bottom:2px;font-size:13px;font-weight:800}
 
 @keyframes spin { to { transform:rotate(360deg); } }
 @media(max-width:600px){
   .audit-card{padding:24px 18px}
   .ahow-step{min-width:100%;max-width:100%}
 }
+
+/* ════════════════════════════════════════════════════
+   AUDIT PAGE — SERVICES EXTRA + FOOTER
+════════════════════════════════════════════════════ */
+
+/* Section services */
+.aservices-section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 64px var(--gutter) 48px;
+}
+.aservices-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.aservices-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(52,209,108,0.08); border: 1px solid rgba(52,209,108,0.25);
+  border-radius: 999px; padding: 6px 18px; margin-bottom: 22px;
+}
+.adot2 { width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0 }
+.aservices-tag span { font-size:11px;font-weight:700;color:var(--green);letter-spacing:0.8px;text-transform:uppercase }
+.aservices-h2 {
+  font-size: clamp(16px, 3.2vw, 32px);
+  font-weight: 800; color: #ffffff;
+  letter-spacing: -0.8px; line-height: 1.25; margin-bottom: 16px;
+  text-wrap: balance;
+}
+.aservices-h2 em {
+  font-style: normal;
+  background: linear-gradient(90deg,#34D16C,#5fffaa,#34D16C);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: text-gradient-move 3s linear infinite;
+}
+.aservices-sub {
+  font-size: clamp(13px, 2vw, 15px); color: rgba(255,255,255,0.85);
+  line-height: 1.65; max-width: 580px; margin: 0 auto;
+  text-wrap: balance;
+}
+
+/* Cards grid */
+.aservices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+@media (max-width: 900px) { .aservices-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .aservices-grid { grid-template-columns: 1fr; } }
+
+/* Card base */
+.asvc-card {
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s, border-color .3s;
+  will-change: transform;
+}
+.asvc-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(255,255,255,0.18);
+}
+.asvc-card--gaming:hover { box-shadow: 0 20px 60px rgba(168,85,247,0.25); }
+.asvc-card--internal:hover { box-shadow: 0 20px 60px rgba(59,130,246,0.25); }
+.asvc-card--ai:hover { box-shadow: 0 20px 60px rgba(52,209,108,0.30); }
+
+/* Glow blobs */
+.asvc-card-glow {
+  position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  filter: blur(60px); pointer-events: none; opacity: 0.35;
+  transition: opacity .4s;
+}
+.asvc-card:hover .asvc-card-glow { opacity: 0.65; }
+.asvc-card-glow--purple { background: radial-gradient(circle, #a855f7, transparent 70%); }
+.asvc-card-glow--blue   { background: radial-gradient(circle, #3b82f6, transparent 70%); }
+.asvc-card-glow--green  { background: radial-gradient(circle, #34D16C, transparent 70%); }
+
+.asvc-card-inner { padding: 28px 24px 24px; position: relative; z-index: 1; }
+
+/* Icon wrap */
+.asvc-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.asvc-icon--gaming  { background: rgba(168,85,247,0.18); color: #c084fc; }
+.asvc-icon--internal{ background: rgba(59,130,246,0.18);  color: #60a5fa; }
+.asvc-icon--ai      { background: rgba(52,209,108,0.18);  color: var(--green); }
+
+/* Badge */
+.asvc-badge {
+  display: inline-block; border-radius: 999px;
+  padding: 3px 12px; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 12px;
+}
+.asvc-badge--purple { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+.asvc-badge--blue   { background: rgba(59,130,246,0.15);  color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+.asvc-badge--green  { background: rgba(52,209,108,0.15);  color: var(--green); border: 1px solid rgba(52,209,108,0.3); }
+
+.asvc-title { font-size: clamp(14px, 2.2vw, 17px); font-weight: 800; letter-spacing: -0.4px; line-height: 1.3; margin-bottom: 12px; text-wrap: balance; }
+.asvc-desc  { font-size: 12.5px; line-height: 1.6; margin-bottom: 18px; text-wrap: balance; }
+
+/* Feature list */
+.asvc-feats { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.asvc-feats li { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.asvc-check { color: var(--green); font-weight: 700; font-size: 12px; flex-shrink: 0; }
+
+/* Card button */
+.asvc-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08); color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px; padding: 10px 20px;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  cursor: pointer; transition: all .2s; width: 100%; justify-content: center;
+}
+.asvc-btn:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); }
+.asvc-btn--featured {
+  background: var(--green); color: #fff; border-color: transparent;
+  box-shadow: 0 4px 20px rgba(52,209,108,0.4);
+}
+.asvc-btn--featured:hover { background: #2ebd60; box-shadow: 0 6px 28px rgba(52,209,108,0.55); }
+
+/* CTA strip */
+.aservices-cta-strip {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  background: rgba(52,209,108,0.07); border: 1px solid rgba(52,209,108,0.22);
+  border-radius: 20px; padding: 28px 32px;
+  flex-wrap: wrap;
+}
+.aservices-cta-text { flex: 1; min-width: 200px; }
+.aservices-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green); color: #fff; border-radius: 999px;
+  padding: 14px 28px; font-size: 15px; font-weight: 700; font-family: inherit;
+  border: none; cursor: pointer; text-decoration: none; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(52,209,108,0.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.aservices-cta-btn:hover { transform: scale(1.04) translateY(-1px); box-shadow: 0 8px 32px rgba(52,209,108,0.55); }
+
+/* Footer audit full */
+.audit-footer-full {
+  text-align: center;
+  padding: 40px var(--gutter) 32px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  background: rgba(5,5,7,0.95);
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+
+/* 3D canvas audit */
+#auditCanvas3d { border-radius: inherit; }
+
+/* Score items text fix */
+.ascore-name { color: #ffffff !important; }
+.ascore-desc { color: rgba(255,255,255,0.55) !important; }
+
+/* ════════════════════════════════════════════════════
+   RGPD BLOCK — 3 lignes centrées avec icônes
+════════════════════════════════════════════════════ */
+.argpd-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: rgba(52,209,108,0.06);
+  border: 1px solid rgba(52,209,108,0.18);
+  border-radius: 14px;
+  position: relative;
+  z-index: 1;
+}
+.argpd-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+.argpd-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.argpd-txt {
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+}
+
+/* ════════════════════════════════════════════════════
+   HERO AUDIT BANNER — espacement au-dessus
+════════════════════════════════════════════════════ */
+.hero-audit-banner {
+  margin-top: 40px !important;
+}
+
+/* ════════════════════════════════════════════════════
+   HERO BTN — redesign premium type tapp.it
+════════════════════════════════════════════════════ */
+.hero-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  background: #34D16C !important;
+  border-radius: 999px !important;
+  border: none !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease !important;
+  box-shadow:
+    0 2px 0 rgba(0,0,0,0.18),
+    0 6px 20px rgba(52,209,108,0.42),
+    0 18px 48px rgba(52,209,108,0.22),
+    0 40px 80px rgba(52,209,108,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.42),
+    inset 0 -1px 0 rgba(0,0,0,0.14) !important;
+  animation: hero-btn-glow 2.8s ease-in-out infinite !important;
+}
+
+@keyframes hero-btn-glow {
+  0%, 100% {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.25) inset,
+      0 -1px 0 rgba(0,0,0,0.15) inset,
+      0 2px 4px rgba(0,0,0,0.10),
+      0 6px 16px rgba(52,209,108,0.38),
+      0 16px 40px rgba(52,209,108,0.24),
+      0 32px 64px rgba(52,209,108,0.12),
+      0 0 0 1.5px rgba(52,209,108,0.50);
+  }
+  50% {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.30) inset,
+      0 -1px 0 rgba(0,0,0,0.15) inset,
+      0 2px 4px rgba(0,0,0,0.12),
+      0 8px 24px rgba(52,209,108,0.60),
+      0 20px 56px rgba(52,209,108,0.40),
+      0 40px 80px rgba(52,209,108,0.22),
+      0 0 0 2px rgba(52,209,108,0.75);
+  }
+}
+.hero-btn:hover {
+  transform: scale(1.04) translateY(-3px) !important;
+  background: #2ebd60 !important;
+  box-shadow:
+    0 2px 0 rgba(0,0,0,0.20),
+    0 10px 36px rgba(52,209,108,0.60),
+    0 24px 64px rgba(52,209,108,0.38),
+    0 48px 96px rgba(52,209,108,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.45),
+    inset 0 -1px 0 rgba(0,0,0,0.14) !important;
+}
+.hero-btn:active { transform: scale(0.97) translateY(0) !important; }
+.hero-btn::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Inner label */
+.hero-btn-label {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.3px !important;
+  color: #ffffff !important;
+  position: relative !important;
+  z-index: 1 !important;
+  padding: 14px 18px 14px 26px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15) !important;
+}
+
+
+/* Badge with animated search icon */
+.hero-btn-badge {
+  border-radius: 999px !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+  background: rgba(0,0,0,0.22) !important;
+  margin: 5px 5px 5px 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 -1px 0 rgba(0,0,0,0.18) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.hero-btn-badge::before {
+  display: none !important;
+}
+.hero-btn-badge span {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.2px !important;
+  color: #ffffff !important;
+}
+
+/* Loupe animation gauche → droite */
+.hero-btn-badge svg {
+  animation: loupe-scan 2.2s cubic-bezier(0.4,0,0.2,1) infinite;
+  flex-shrink: 0;
+}
+@keyframes loupe-scan {
+  0%   { transform: translateX(-4px) scale(0.9); opacity: 0.6; }
+  40%  { transform: translateX(0px)  scale(1.0); opacity: 1;   }
+  60%  { transform: translateX(0px)  scale(1.0); opacity: 1;   }
+  100% { transform: translateX(4px)  scale(0.9); opacity: 0.6; }
+}
+.hero-btn:hover .hero-btn-badge svg {
+  animation: loupe-scan-fast 0.9s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+@keyframes loupe-scan-fast {
+  0%   { transform: translateX(-5px) rotate(-8deg); opacity: 0.7; }
+  50%  { transform: translateX(5px)  rotate(8deg);  opacity: 1;   }
+  100% { transform: translateX(-5px) rotate(-8deg); opacity: 0.7; }
+}
+
+/* Shimmer sweep sur le bouton hero */
+.hero-btn::after {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  animation: hero-btn-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+@keyframes hero-btn-shimmer {
+  0%   { left: -100%; }
+  40%, 100% { left: 120%; }
+}
+
+/* Force white text in audit footer */
+.audit-footer-full .footer-credit,
+.audit-footer-full .footer-copy { color: rgba(255,255,255,0.75) !important; }
 </style>
 </head>
 <body>
@@ -3543,14 +3925,13 @@ body {
       <button class="hero-btn" onclick="openCallModal()">
         <span class="hero-btn-label">Démarrer un projet</span>
         <div class="hero-btn-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <span>Devis gratuit</span>
         </div>
       </button>
 
-      <!-- ─── Hero Infographic Image ─── -->
       <!-- ─── Hero Audit CTA Banner ─── -->
-      <a href="/audit" onclick="showPage('audit');window.scrollTo(0,0);return false;" class="hero-audit-banner">
+      <a href="/audit" onclick="showPage('audit');window.scrollTo(0,0);return false;" class="hero-audit-banner" style="margin-top:32px">
         <span class="hero-audit-icon">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </span>
@@ -5008,8 +5389,8 @@ function showPage(page, anchor) {
     if(contactBtn) contactBtn.style.display = 'none';
     window.scrollTo(0, 0);
     currentPage = 'audit';
-    // Update URL for audit
     if (history.pushState) history.pushState({page:'audit'}, '', '/audit');
+    setTimeout(initAuditCanvas, 80);
   } else {
     // home
     if(homeEl) homeEl.style.display = 'block';
@@ -5801,6 +6182,116 @@ document.addEventListener('keydown', function(e) {
   }
   animateDots();
 })();
+
+
+/* ════════════════════════════════════════════════
+   AUDIT PAGE — 3D GRID CANVAS ANIMATION
+════════════════════════════════════════════════ */
+function initAuditCanvas() {
+  const canvas = document.getElementById('auditCanvas3d');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, lines, t = 0;
+
+  function resize() {
+    const parent = canvas.parentElement;
+    W = canvas.width  = parent.offsetWidth;
+    H = canvas.height = parent.offsetHeight;
+    buildGrid();
+  }
+
+  function buildGrid() {
+    lines = [];
+    const COLS = 14, ROWS = 8;
+    const cw = W / COLS, ch = H / ROWS;
+    // Horizontal lines
+    for (let r = 0; r <= ROWS; r++) {
+      const pts = [];
+      for (let c = 0; c <= COLS; c++) pts.push({ x: c * cw, y: r * ch });
+      lines.push({ pts, dir: 'h', idx: r });
+    }
+    // Vertical lines
+    for (let c = 0; c <= COLS; c++) {
+      const pts = [];
+      for (let r = 0; r <= ROWS; r++) pts.push({ x: c * cw, y: r * ch });
+      lines.push({ pts, dir: 'v', idx: c });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.012;
+    const amp = 8, freq = 0.18;
+    lines.forEach(line => {
+      ctx.beginPath();
+      line.pts.forEach((p, i) => {
+        const wave = Math.sin(t + (line.dir === 'h' ? p.x : p.y) * freq + line.idx * 0.5) * amp;
+        const px = line.dir === 'h' ? p.x : p.x + wave * 0.4;
+        const py = line.dir === 'v' ? p.y : p.y + wave;
+        if (i === 0) ctx.moveTo(px, py);
+        else         ctx.lineTo(px, py);
+      });
+      // Color: subtle green to teal gradient based on position
+      const progress = (line.dir === 'h' ? line.idx / 8 : line.idx / 14);
+      const alpha = 0.06 + Math.abs(Math.sin(t * 0.5 + progress * Math.PI)) * 0.12;
+      ctx.strokeStyle = `rgba(52,209,108,${alpha.toFixed(3)})`;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    });
+
+    // Floating dots on grid intersections
+    const COLS = 14, ROWS = 8;
+    const cw = W / COLS, ch = H / ROWS;
+    for (let r = 0; r <= ROWS; r++) {
+      for (let c = 0; c <= COLS; c++) {
+        const wave = Math.sin(t + c * freq + r * 0.5) * amp;
+        const dx = c * cw, dy = r * ch + wave;
+        const pulse = Math.abs(Math.sin(t * 1.5 + c * 0.3 + r * 0.7));
+        if (pulse > 0.75) {
+          ctx.beginPath();
+          ctx.arc(dx, dy, 1.5 + pulse * 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(52,209,108,${(0.15 + pulse * 0.55).toFixed(2)})`;
+          ctx.fill();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+}
+
+// Canvas audit: init appelé depuis showPage principale
+
+
+/* ════════════════════════════════════════════════
+   URL ROUTING — audit page on direct load / back button
+════════════════════════════════════════════════ */
+(function() {
+  function routeByUrl() {
+    const path = window.location.pathname;
+    if (path === '/audit' || path.includes('audit')) {
+      showPage('audit');
+    } else if (path === '/demo') {
+      showPage('demo');
+    } else if (path === '/services') {
+      showPage('services');
+    }
+  }
+  // On direct load
+  document.addEventListener('DOMContentLoaded', routeByUrl);
+  // On back/forward button
+  window.addEventListener('popstate', function(e) {
+    if (e.state && e.state.page) {
+      showPage(e.state.page);
+    } else {
+      routeByUrl();
+    }
+  });
+})();
+
 </script>
 
 <!-- ══════════════════════════════════════════
@@ -5808,49 +6299,64 @@ document.addEventListener('keydown', function(e) {
 ══════════════════════════════════════════ -->
 <div id="page-audit" class="page-audit">
 
-  <!-- Hero -->
+  <!-- ════ HERO ════ -->
   <div class="audit-hero-section">
-    <div class="audit-tag"><span class="adot"></span><span>Audit gratuit &amp; instantané</span></div>
-    <h1 class="audit-h1">Votre site est-il vraiment<br><em>visible sur Google ?</em></h1>
-    <p class="audit-h1-sub">Entrez l'adresse de votre site. Nous l'analysons en temps réel — performance, SEO technique, accessibilité et bonnes pratiques — et vous livrons un score détaillé, gratuitement.</p>
+    <!-- Animated 3D grid background -->
+    <canvas id="auditCanvas3d" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.55"></canvas>
+    <div class="audit-tag" style="position:relative;z-index:1"><span class="adot"></span><span>Audit gratuit &amp; instantané</span></div>
+    <h1 class="audit-h1" style="position:relative;z-index:1">Votre site est-il vraiment visible sur Google <em>et l'IA ?</em></h1>
+    <p class="audit-h1-sub" style="position:relative;z-index:1;color:#ffffff;font-weight:500;">Entrez l'adresse de votre site. Nous l'analysons en temps réel — performance, SEO technique, accessibilité et bonnes pratiques — et vous livrons un score détaillé, gratuitement.</p>
   </div>
 
-  <!-- Form -->
+  <!-- ════ FORM CARD ════ -->
   <div class="audit-form-wrap2">
     <div class="audit-card">
 
-      <!-- Form fields -->
       <div id="audit-form-content">
         <div class="afield">
-          <label class="afield-label">Nom de domaine / URL de votre site *</label>
+          <label class="afield-label" style="color:#ffffff;font-weight:700">Nom de domaine / URL de votre site *</label>
           <input class="afield-input" type="url" id="audit-url-new" placeholder="https://www.votresite.fr" autocomplete="url" />
         </div>
         <div class="afield">
-          <label class="afield-label">Nom de votre entreprise</label>
+          <label class="afield-label" style="color:#ffffff;font-weight:700">Nom de votre entreprise</label>
           <input class="afield-input" type="text" id="audit-name-new" placeholder="Ex: Boulangerie Martin, Cabinet Dupont…" />
         </div>
         <button class="asubmit-btn" onclick="startAuditSPA()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           Analyser mon site gratuitement
         </button>
-        <div class="argpd">🔒 Aucune donnée revendue — Analyse 100% automatique — Conforme RGPD</div>
+        <div class="argpd-block">
+          <div class="argpd-row">
+            <span class="argpd-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D16C" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+            <span class="argpd-txt">Aucune donnée revendue</span>
+          </div>
+          <div class="argpd-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D16C" stroke-width="2.5" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span class="argpd-txt">Analyse 100% automatique</span>
+          </div>
+          <div class="argpd-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D16C" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="argpd-txt">Conforme RGPD</span>
+          </div>
+        </div>
       </div>
 
       <!-- Loading -->
       <div class="aloading" id="audit-loading-new">
         <div class="aspinner"></div>
-        <div class="aloading-step" id="audit-loading-step">Connexion à l'analyseur…</div>
+        <div class="aloading-step" id="audit-loading-step" style="color:#ffffff">Connexion à l'analyseur…</div>
         <div class="aloading-bar-wrap"><div class="aloading-bar" id="audit-loading-bar"></div></div>
       </div>
 
       <!-- Results -->
       <div class="aresult" id="audit-result-new">
-        <div class="asource-badge">
+        <div class="asource-badge" style="color:#ffffff">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           Résultats basés sur Google PageSpeed Insights &amp; analyse IA
         </div>
 
-        <!-- Score ring -->
         <div class="aglobal-score">
           <div class="aring-wrap">
             <div class="aring-bg"></div>
@@ -5859,21 +6365,19 @@ document.addEventListener('keydown', function(e) {
               <circle class="aring-fill" id="aring-fill" cx="50" cy="50" r="45"/>
             </svg>
             <div class="aring-val">
-              <div class="aring-num" id="aring-num">—</div>
-              <div class="aring-label">/ 100</div>
+              <div class="aring-num" id="aring-num" style="color:#ffffff">—</div>
+              <div class="aring-label" style="color:rgba(255,255,255,0.55)">/ 100</div>
             </div>
           </div>
-          <div class="aglobal-title" id="aglobal-title">Score global</div>
-          <div class="aglobal-sub" id="aglobal-sub">En attente d'analyse…</div>
+          <div class="aglobal-title" id="aglobal-title" style="color:#ffffff;font-size:18px;font-weight:800">Score global</div>
+          <div class="aglobal-sub" id="aglobal-sub" style="color:rgba(255,255,255,0.6)">En attente d'analyse…</div>
         </div>
 
-        <!-- Scores list -->
         <div class="ascores-wrap" id="ascores-list"></div>
 
-        <!-- CTA -->
         <div class="acta-block">
-          <h3>🚀 Améliorons votre score ensemble</h3>
-          <p>Notre équipe Alpha Korner peut corriger chacun de ces points et propulser votre site en tête des résultats Google. Devis gratuit, réponse sous 24h.</p>
+          <h3 style="color:#ffffff">🚀 Améliorons votre score ensemble</h3>
+          <p style="color:#ffffff;opacity:0.85">Notre équipe Alpha Korner peut corriger chacun de ces points et propulser votre site en tête des résultats Google. Devis gratuit, réponse sous 24h.</p>
           <a href="tel:+33353630332" class="acta-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Obtenir mon audit complet
@@ -5881,47 +6385,141 @@ document.addEventListener('keydown', function(e) {
           <br>
           <button class="aretry-btn" onclick="resetAuditSPA()">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-            Tester un autre site
+            <span style="color:rgba(255,255,255,0.75)">Tester un autre site</span>
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ HOW IT WORKS ════ -->
+  <div class="ahow-wrap" id="audit-how-wrap">
+    <div class="ahow-title" style="color:#ffffff;font-weight:800;font-size:16px;letter-spacing:-0.3px">Comment ça marche</div>
+    <div class="ahow-steps">
+      <div class="ahow-step">
+        <div class="ahow-num">1</div>
+        <div class="ahow-text" style="color:#ffffff"><strong style="color:#ffffff">Entrez votre URL</strong><span style="color:rgba(255,255,255,0.75);display:block;font-size:12px;margin-top:2px">L'adresse complète de votre site web</span></div>
+      </div>
+      <div class="ahow-step">
+        <div class="ahow-num">2</div>
+        <div class="ahow-text" style="color:#ffffff"><strong style="color:#ffffff">Analyse en direct</strong><span style="color:rgba(255,255,255,0.75);display:block;font-size:12px;margin-top:2px">Via Google PageSpeed + analyse IA</span></div>
+      </div>
+      <div class="ahow-step">
+        <div class="ahow-num">3</div>
+        <div class="ahow-text" style="color:#ffffff"><strong style="color:#ffffff">Recevez votre score</strong><span style="color:rgba(255,255,255,0.75);display:block;font-size:12px;margin-top:2px">Performance, SEO, accessibilité et bonnes pratiques</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SECTION SERVICES EXTRA ════ -->
+  <section class="aservices-section">
+
+    <!-- Section header -->
+    <div class="aservices-header">
+      <div class="aservices-tag">
+        <span class="adot2"></span>
+        <span style="color:#ffffff">Nos expertises complètes</span>
+      </div>
+      <h2 class="aservices-h2">Au-delà de l'audit, nous construisons <em>des solutions qui transforment votre activité</em></h2>
+      <p class="aservices-sub" style="color:rgba(255,255,255,0.8)">Logiciels de jeux &amp; fidélisation, outils internes sur mesure, sites IA avec animations 3D 4K — tout ce dont votre entreprise a besoin pour dominer en 2026.</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="aservices-grid">
+
+      <!-- Card 1 : Jeux & Fidélisation -->
+      <div class="asvc-card asvc-card--gaming" data-tilt>
+        <div class="asvc-card-glow asvc-card-glow--purple"></div>
+        <div class="asvc-card-inner">
+          <div class="asvc-icon-wrap asvc-icon--gaming">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1" fill="currentColor"/><circle cx="18" cy="13" r="1" fill="currentColor"/></svg>
+          </div>
+          <div class="asvc-badge asvc-badge--purple">Fidélisation</div>
+          <h3 class="asvc-title" style="color:#ffffff">Logiciels de jeux &amp; gamification</h3>
+          <p class="asvc-desc" style="color:rgba(255,255,255,0.72)">Roues à cadeaux, programmes de points, quiz interactifs, concours digitaux — des expériences ludiques qui transforment vos visiteurs en clients fidèles et boostent vos revenus.</p>
+          <ul class="asvc-feats">
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Roue gagnante QR code</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Programme de fidélité digital</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Quiz &amp; concours sur mesure</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Dashboard analytics temps réel</span></li>
+          </ul>
+          <button class="asvc-btn" onclick="showPage('home');setTimeout(openCallModal,200)">Démarrer un projet →</button>
+        </div>
+      </div>
+
+      <!-- Card 2 : Logiciels internes -->
+      <div class="asvc-card asvc-card--internal" data-tilt>
+        <div class="asvc-card-glow asvc-card-glow--blue"></div>
+        <div class="asvc-card-inner">
+          <div class="asvc-icon-wrap asvc-icon--internal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="asvc-badge asvc-badge--blue">Entreprise</div>
+          <h3 class="asvc-title" style="color:#ffffff">Logiciels internes sur mesure</h3>
+          <p class="asvc-desc" style="color:rgba(255,255,255,0.72)">CRM, ERP, outils de gestion RH, tableaux de bord opérationnels — des logiciels taillés exactement pour vos processus métier, pas l'inverse. Zéro compromis, 100% adapté.</p>
+          <ul class="asvc-feats">
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">CRM &amp; ERP personnalisés</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Gestion RH &amp; planning</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Automatisation des processus</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Intégrations API &amp; données</span></li>
+          </ul>
+          <button class="asvc-btn" onclick="showPage('home');setTimeout(openCallModal,200)">Démarrer un projet →</button>
+        </div>
+      </div>
+
+      <!-- Card 3 : Sites IA + 3D 4K -->
+      <div class="asvc-card asvc-card--ai" data-tilt>
+        <div class="asvc-card-glow asvc-card-glow--green"></div>
+        <div class="asvc-card-inner">
+          <div class="asvc-icon-wrap asvc-icon--ai">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <div class="asvc-badge asvc-badge--green">2026 Ready</div>
+          <h3 class="asvc-title" style="color:#ffffff">Sites web IA + animations 3D 4K</h3>
+          <p class="asvc-desc" style="color:rgba(255,255,255,0.72)">Des sites d'une qualité visuelle exceptionnelle : shaders WebGL, particules 3D, transitions cinématiques 4K, IA intégrée. Le niveau des plus grandes marques mondiales, pour votre entreprise.</p>
+          <ul class="asvc-feats">
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Animations WebGL &amp; Three.js</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Rendu 3D temps réel 4K</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">IA conversationnelle intégrée</span></li>
+            <li><span class="asvc-check">✓</span><span style="color:rgba(255,255,255,0.8)">Score Lighthouse 95+ garanti</span></li>
+          </ul>
+          <button class="asvc-btn asvc-btn--featured" onclick="showPage('home');setTimeout(openCallModal,200)">Démarrer un projet →</button>
         </div>
       </div>
 
     </div>
-  </div>
 
-  <!-- How it works -->
-  <div class="ahow-wrap" id="audit-how-wrap">
-    <div class="ahow-title">Comment ça marche</div>
-    <div class="ahow-steps">
-      <div class="ahow-step">
-        <div class="ahow-num">1</div>
-        <div class="ahow-text"><strong>Entrez votre URL</strong>L'adresse complète de votre site web</div>
+    <!-- Bottom CTA strip -->
+    <div class="aservices-cta-strip">
+      <div class="aservices-cta-text">
+        <span style="color:#ffffff;font-weight:700;font-size:clamp(14px,2.5vw,18px);display:block;text-wrap:balance">Une idée ? Un besoin ? Un projet ?</span>
+        <span style="color:rgba(255,255,255,0.85);font-size:14px;display:block;margin-top:4px">Notre équipe vous répond sous 24h — devis gratuit et sans engagement.</span>
       </div>
-      <div class="ahow-step">
-        <div class="ahow-num">2</div>
-        <div class="ahow-text"><strong>Analyse en direct</strong>Via Google PageSpeed + analyse IA des points bloquants</div>
-      </div>
-      <div class="ahow-step">
-        <div class="ahow-num">3</div>
-        <div class="ahow-text"><strong>Recevez votre score</strong>Performance, SEO, accessibilité et bonnes pratiques notés sur 100</div>
-      </div>
+      <a href="tel:+33353630332" class="aservices-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Appeler Alpha Korner
+      </a>
     </div>
-  </div>
 
-  <!-- Footer Audit -->
-  <footer class="footer" style="background:rgba(5,5,7,0.8);margin-top:32px">
-    <a href="#" onclick="showPage('home');window.scrollTo(0,0);return false;" class="nav-logo-svg" style="justify-content:center;position:relative;z-index:1">
+  </section>
+
+  <!-- ════ FOOTER AUDIT ════ -->
+  <footer class="audit-footer-full">
+    <a href="#" onclick="showPage('home');window.scrollTo(0,0);return false;" class="nav-logo-svg" style="justify-content:center;position:relative;z-index:1;margin-bottom:16px">
       <svg class="ak-logo-mark" viewBox="0 0 38 38" fill="none">
-        <circle cx="19" cy="19" r="18" stroke="#1D1D1E" stroke-width="2.5"/>
+        <circle cx="19" cy="19" r="18" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
         <rect x="24" y="6" width="3.5" height="22" rx="1.75" fill="#34D16C"/>
-        <path d="M24 19C24 22.866 20.866 26 17 26C13.134 26 10 22.866 10 19C10 15.134 13.134 12 17 12C20.866 12 24 15.134 24 19Z" stroke="#1D1D1E" stroke-width="2.5"/>
+        <path d="M24 19C24 22.866 20.866 26 17 26C13.134 26 10 22.866 10 19C10 15.134 13.134 12 17 12C20.866 12 24 15.134 24 19Z" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
         <circle cx="17" cy="19" r="4" fill="white"/>
       </svg>
-      <div class="ak-logo-wordmark">Alpha<span>Korner</span></div>
+      <div class="ak-logo-wordmark" style="color:#ffffff">Alpha<span style="color:var(--green)">Korner</span></div>
     </a>
-    <p class="footer-credit">Site créé avec ♥️ par Brice Jacotet</p>
-    <p class="footer-copy">© 2026 Alpha Korner — Logiciels sur mesure à Strasbourg</p>
+    <p style="color:#ffffff;font-size:13px;margin-bottom:6px;font-weight:500">Agence web &amp; logiciels sur mesure — Strasbourg, Alsace, Grand Est</p>
+    <p style="color:rgba(255,255,255,0.8);font-size:12px;margin-bottom:4px">Site créé avec ♥️ par Brice Jacotet</p>
+    <p style="color:rgba(255,255,255,0.75);font-size:11px">© 2026 Alpha Korner — Tous droits réservés</p>
   </footer>
+
+</div>
 
 </div>
 
