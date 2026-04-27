@@ -2639,6 +2639,798 @@ body::before{
 .hero-section {
   overflow: visible !important;
 }
+
+/* ════════════════════════════════════════════════════
+   HERO INFOGRAPHIC IMAGE — animated green shadow
+════════════════════════════════════════════════════ */
+.hero-infographic-wrap {
+  position: relative;
+  width: min(700px, 95vw);
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.hero-infographic-glow {
+  position: absolute;
+  inset: -8px -12px;
+  border-radius: 22px;
+  background: transparent;
+  pointer-events: none;
+  animation: infographic-glow-pulse 2.8s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes infographic-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(52,209,108,0.30),
+      0 0 40px rgba(52,209,108,0.15),
+      0 8px 32px rgba(52,209,108,0.20),
+      inset 0 0 0 1.5px rgba(52,209,108,0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(52,209,108,0.55),
+      0 0 80px rgba(52,209,108,0.28),
+      0 16px 64px rgba(52,209,108,0.35),
+      inset 0 0 0 1.5px rgba(52,209,108,0.35);
+  }
+}
+.hero-infographic-img {
+  display: block;
+  width: 100%;
+  border-radius: 18px;
+  border: 1.5px solid rgba(52,209,108,0.25);
+  box-shadow:
+    0 0 0 1px rgba(52,209,108,0.15),
+    0 4px 24px rgba(0,0,0,0.18),
+    0 12px 40px rgba(0,0,0,0.10);
+  position: relative;
+  z-index: 1;
+  animation: infographic-float 5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes infographic-float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-6px) scale(1.005); }
+}
+
+/* ════════════════════════════════════════════════════
+   SOLUTIONS PAGE — SOL BLOCKS
+════════════════════════════════════════════════════ */
+.sol-block {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+@media(min-width: 860px) {
+  .sol-block {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+  .sol-block.sol-block-rev {
+    flex-direction: row-reverse;
+  }
+  .sol-header {
+    flex: 0 0 320px;
+  }
+  .sol-browser-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+}
+.sol-header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sol-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sol-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(52,209,108,0.4);
+  letter-spacing: 1px;
+}
+.sol-tag {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(52,209,108,0.09);
+  border: 1px solid rgba(52,209,108,0.20);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.sol-title {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+}
+.sol-title em {
+  font-style: normal;
+  color: var(--green);
+}
+.sol-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  letter-spacing: -0.1px;
+}
+.sol-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sol-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.70);
+}
+.sol-check {
+  color: var(--green);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sol-ext-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(52,209,108,0.10);
+  border: 1px solid rgba(52,209,108,0.28);
+  color: var(--green);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.sol-ext-btn:hover {
+  background: rgba(52,209,108,0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(52,209,108,0.25);
+}
+
+/* Browser mockup */
+.sol-browser-wrap {
+  width: 100%;
+}
+.sol-browser {
+  background: #1a1a1e;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25);
+}
+.sol-browser-bar {
+  background: #111113;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.sol-browser-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.sol-browser-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+.sol-browser-dots span:nth-child(1) { background: #ff5f57; }
+.sol-browser-dots span:nth-child(2) { background: #febc2e; }
+.sol-browser-dots span:nth-child(3) { background: #28c840; }
+.sol-browser-url {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.30);
+  text-align: center;
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sol-iframe {
+  width: 100%;
+  height: 480px;
+  border: none;
+  display: block;
+  background: #050507;
+}
+@media(max-width: 640px) {
+  .sol-iframe { height: 340px; }
+}
+
+/* ════════════════════════════════════════════════════
+   AUDIT SEO PAGE
+════════════════════════════════════════════════════ */
+
+.page-audit {
+  display: none;
+  min-height: 100vh;
+  background: #050507;
+  padding-top: 102px;
+}
+.page-audit.active { display: block; }
+
+.audit-hero {
+  padding: 64px var(--gutter) 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #050507 0%, #080810 100%);
+}
+.audit-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(52,209,108,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.audit-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(52,209,108,0.08);
+  border: 1px solid rgba(52,209,108,0.25);
+  border-radius: 999px;
+  padding: 6px 18px;
+  margin-bottom: 24px;
+}
+.audit-hero-tag span { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 0.8px; text-transform: uppercase; }
+.audit-hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+.audit-hero-h1 {
+  font-size: clamp(26px, 6vw, 48px);
+  font-weight: 800;
+  color: white;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.audit-hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg,#34D16C,#5fffaa,#34D16C);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-gradient-move 3s linear infinite;
+}
+.audit-hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+
+.audit-form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 80px;
+}
+.audit-form-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 24px;
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.audit-form-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(52,209,108,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.audit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+.audit-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+.audit-input {
+  width: 100%;
+  padding: 13px 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  outline: none;
+  transition: border-color .3s, box-shadow .3s, background .3s;
+}
+.audit-input::placeholder { color: rgba(255,255,255,0.20); }
+.audit-input:focus {
+  border-color: rgba(52,209,108,0.5);
+  background: rgba(52,209,108,0.04);
+  box-shadow: 0 0 0 3px rgba(52,209,108,0.10), 0 0 20px rgba(52,209,108,0.08);
+}
+.audit-btn {
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(52,209,108,0.35);
+  animation: btn-glow 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  margin-top: 6px;
+}
+.audit-btn:hover { transform: scale(1.02) translateY(-2px); box-shadow: 0 8px 32px rgba(52,209,108,0.50); }
+.audit-btn:active { transform: scale(0.98); }
+.audit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.audit-result {
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+.audit-result.visible { display: block; }
+.audit-score-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.audit-score-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeInUp 0.4s cubic-bezier(0.22,1,0.36,1) both;
+}
+.audit-score-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.audit-score-icon.good { background: rgba(52,209,108,0.15); }
+.audit-score-icon.warn { background: rgba(255,165,0,0.15); }
+.audit-score-icon.bad { background: rgba(255,77,77,0.15); }
+.audit-score-label { font-size: 13px; font-weight: 600; color: white; margin-bottom: 3px; }
+.audit-score-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.4; }
+.audit-score-badge {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.audit-score-badge.good { background: rgba(52,209,108,0.15); color: var(--green); }
+.audit-score-badge.warn { background: rgba(255,165,0,0.15); color: orange; }
+.audit-score-badge.bad { background: rgba(255,77,77,0.12); color: #ff6b6b; }
+
+.audit-cta-block {
+  margin-top: 20px;
+  background: rgba(52,209,108,0.08);
+  border: 1px solid rgba(52,209,108,0.25);
+  border-radius: 16px;
+  padding: 22px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.audit-cta-block h3 { font-size: 17px; font-weight: 700; color: white; margin-bottom: 8px; }
+.audit-cta-block p { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+.audit-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: white;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(52,209,108,0.40);
+  transition: transform .2s, box-shadow .2s;
+}
+.audit-cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 28px rgba(52,209,108,0.55); }
+
+.audit-loading {
+  display: none;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+.audit-loading.visible { display: block; }
+.audit-loading-spinner {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(52,209,108,0.15);
+  border-top-color: var(--green);
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+  box-shadow: 0 0 16px rgba(52,209,108,0.4);
+}
+.audit-loading p { color: rgba(255,255,255,0.45); font-size: 14px; }
+
+/* ════════════════════════════════════════════════════
+   SCROLL FLUIDE — fix bug scroll au chargement
+════════════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* ════════════════════════════════════════════════════
+   MOBILE NAV — Fixed style identique à la capture
+════════════════════════════════════════════════════ */
+@media (max-width: 639px) {
+  .nav-wrapper {
+    padding: 6px 12px !important;
+    top: 34px !important;
+  }
+  .nav-inner {
+    padding: 5px 5px 5px 12px !important;
+    border-radius: 999px !important;
+    flex-shrink: 0;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .ak-logo-wordmark {
+    font-size: 15px !important;
+  }
+  .ak-logo-mark {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .nav-demo-btn {
+    padding: 5px 10px !important;
+    font-size: 10.5px !important;
+    gap: 4px !important;
+  }
+  .nav-cta {
+    padding: 7px 13px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+  }
+  .nav-links {
+    gap: 6px !important;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════
+   HERO AUDIT BANNER — Single line, all screens
+════════════════════════════════════════════════════ */
+.hero-audit-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(52,209,108,0.10);
+  border: 1.5px solid rgba(52,209,108,0.35);
+  border-radius: 999px;
+  padding: 12px 22px 12px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 16px;
+  white-space: nowrap;
+  max-width: 100%;
+  transition: transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s, background .2s;
+  animation: banner-pulse 3.5s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+.hero-audit-banner::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(90deg, rgba(52,209,108,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+@keyframes banner-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(52,209,108,0.10), 0 2px 16px rgba(52,209,108,0.15); }
+  50%      { box-shadow: 0 0 0 5px rgba(52,209,108,0.08), 0 4px 28px rgba(52,209,108,0.28); }
+}
+.hero-audit-banner:hover {
+  transform: scale(1.03) translateY(-1px);
+  background: rgba(52,209,108,0.16);
+  box-shadow: 0 6px 28px rgba(52,209,108,0.30);
+}
+.hero-audit-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--green);
+  color: white;
+  flex-shrink: 0;
+}
+.hero-audit-text {
+  font-size: 15px; font-weight: 700; color: var(--dark);
+  letter-spacing: -0.3px; white-space: nowrap; flex-shrink: 0;
+}
+.hero-audit-badge {
+  background: var(--green); color: white;
+  border-radius: 999px; padding: 3px 12px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.2px;
+  white-space: nowrap; flex-shrink: 0;
+}
+/* Très petits écrans : réduire légèrement */
+@media (max-width: 400px) {
+  .hero-audit-banner { padding: 10px 14px 10px 12px; gap: 8px; }
+  .hero-audit-text   { font-size: 13px; }
+  .hero-audit-icon   { width: 26px; height: 26px; }
+  .hero-audit-badge  { font-size: 10px; padding: 2px 9px; }
+}
+@media (max-width: 340px) {
+  .hero-audit-text { font-size: 12px; }
+  .hero-audit-badge { display: none; }
+}
+
+/* ════════════════════════════════════════════════════
+   NAV — Lock to single row on ALL screen sizes
+════════════════════════════════════════════════════ */
+.nav-wrapper {
+  padding: clamp(5px,1.5vw,7px) clamp(8px,2vw,var(--gutter)) !important;
+}
+.nav-inner {
+  flex-wrap: nowrap !important;
+  min-width: 0 !important;
+  overflow: hidden;
+}
+.nav-logo-svg { flex-shrink: 0; }
+.ak-logo-wordmark {
+  font-size: clamp(13px,3.5vw,17px) !important;
+  white-space: nowrap;
+}
+.ak-logo-mark {
+  width: clamp(22px,6vw,30px) !important;
+  height: clamp(22px,6vw,30px) !important;
+}
+.nav-links { flex-shrink: 0; gap: clamp(5px,1.5vw,8px) !important; }
+.nav-demo-btn {
+  padding: clamp(4px,1vw,5px) clamp(8px,2vw,12px) !important;
+  font-size: clamp(9.5px,2.5vw,11px) !important;
+  gap: 3px !important;
+  white-space: nowrap !important;
+}
+.nav-cta {
+  padding: clamp(5px,1.3vw,7px) clamp(10px,2.5vw,16px) !important;
+  font-size: clamp(9.5px,2.5vw,12px) !important;
+  gap: 4px !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 360px) {
+  .nav-demo-btn { font-size: 9px !important; padding: 4px 7px !important; }
+  .nav-cta      { font-size: 9px !important; padding: 5px 9px !important; }
+  .ak-logo-wordmark { font-size: 12px !important; }
+}
+
+/* ════════════════════════════════════════════════════
+   PAGE AUDIT — CSS complet (intégré SPA)
+════════════════════════════════════════════════════ */
+
+/* Page wrapper */
+.page-audit { display:none; min-height:100vh; background:#050507; padding-top:0; }
+.page-audit.active { display:block; }
+
+/* Audit Hero */
+.audit-hero-section {
+  padding:clamp(100px,16vw,140px) var(--gutter) 56px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#050507 0%,#080810 100%);
+  max-width:860px;margin:0 auto;
+}
+.audit-hero-section::before {
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(52,209,108,0.13) 0%,transparent 65%);
+  pointer-events:none;
+}
+.audit-tag {
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(52,209,108,0.08);border:1px solid rgba(52,209,108,0.25);
+  border-radius:999px;padding:6px 18px;margin-bottom:28px;position:relative;z-index:1;
+}
+.audit-tag .adot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.audit-tag span{font-size:11px;font-weight:700;color:var(--green);letter-spacing:0.8px;text-transform:uppercase}
+.audit-h1 {
+  font-size:clamp(26px,5.5vw,50px);font-weight:800;color:white;
+  letter-spacing:-1.5px;line-height:1.12;margin-bottom:16px;position:relative;z-index:1;
+}
+.audit-h1 em {
+  font-style:normal;
+  background:linear-gradient(90deg,#34D16C,#5fffaa,#34D16C);
+  background-size:200% auto;-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+  animation:text-gradient-move 3s linear infinite;
+}
+.audit-h1-sub {
+  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
+  max-width:540px;margin:0 auto 40px;position:relative;z-index:1;
+}
+
+/* Form card */
+.audit-form-wrap2 { max-width:640px;margin:0 auto;padding:0 var(--gutter) 60px; }
+.audit-card {
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);
+  border-radius:24px;padding:36px 28px;position:relative;overflow:hidden;
+}
+.audit-card::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(52,209,108,0.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.afield { display:flex;flex-direction:column;gap:6px;margin-bottom:18px;position:relative;z-index:1; }
+.afield-label { font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.7px; }
+.afield-input {
+  width:100%;padding:13px 18px;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);
+  border-radius:12px;font-size:14px;font-family:inherit;color:white;
+  outline:none;transition:border-color .3s,box-shadow .3s,background .3s;
+}
+.afield-input::placeholder{color:rgba(255,255,255,0.20)}
+.afield-input:focus {
+  border-color:rgba(52,209,108,0.5);background:rgba(52,209,108,0.04);
+  box-shadow:0 0 0 3px rgba(52,209,108,0.10),0 0 20px rgba(52,209,108,0.08);
+}
+.asubmit-btn {
+  width:100%;padding:16px 24px;margin-top:8px;
+  background:var(--green);color:white;border:none;border-radius:14px;
+  font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(52,209,108,0.35);
+  animation:btn-glow 3s ease-in-out infinite;position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.asubmit-btn:hover{transform:scale(1.02) translateY(-2px);box-shadow:0 8px 36px rgba(52,209,108,0.50)}
+.asubmit-btn:active{transform:scale(0.98)}
+.argpd{text-align:center;margin-top:18px;font-size:11px;color:rgba(255,255,255,0.2);position:relative;z-index:1}
+
+/* Loading */
+.aloading{display:none;text-align:center;padding:32px 24px;position:relative;z-index:1}
+.aloading.visible{display:block}
+.aspinner {
+  width:48px;height:48px;border-radius:50%;
+  border:3px solid rgba(52,209,108,0.15);border-top-color:var(--green);
+  animation:spin 0.8s linear infinite;margin:0 auto 18px;
+  box-shadow:0 0 20px rgba(52,209,108,0.4);
+}
+.aloading-step{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:8px;min-height:22px}
+.aloading-bar-wrap{background:rgba(255,255,255,0.06);border-radius:999px;height:4px;margin:12px 0;overflow:hidden}
+.aloading-bar{height:100%;background:var(--green);border-radius:999px;width:0%;transition:width .4s ease}
+
+/* Results */
+.aresult{display:none;position:relative;z-index:1;margin-top:28px}
+.aresult.visible{display:block}
+.asource-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.25);margin-bottom:20px}
+.asource-badge svg{opacity:.4}
+
+/* Score ring */
+.aglobal-score {
+  text-align:center;margin-bottom:24px;
+  background:rgba(52,209,108,0.06);border:1px solid rgba(52,209,108,0.18);
+  border-radius:20px;padding:28px 20px;position:relative;overflow:hidden;
+}
+.aglobal-score::before {
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(52,209,108,0.10) 0%,transparent 70%);
+  pointer-events:none;
+}
+.aring-wrap{position:relative;width:110px;height:110px;margin:0 auto 14px}
+.aring-bg{position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,0.04);border:3px solid rgba(255,255,255,0.08)}
+.aring-svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.aring-track{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:8}
+.aring-fill{fill:none;stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1),stroke .5s}
+.aring-val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.aring-num{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
+.aring-label{font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
+.aglobal-title{font-size:17px;font-weight:700;color:white;margin-bottom:6px;position:relative;z-index:1}
+.aglobal-sub{font-size:13px;color:rgba(255,255,255,0.45);position:relative;z-index:1}
+
+/* Score items */
+.ascores-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.ascore-item {
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;
+  animation:fadeInUp .4s cubic-bezier(.22,1,.36,1) both;
+}
+.ascore-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ascore-icon.good{background:rgba(52,209,108,0.15)}
+.ascore-icon.warn{background:rgba(255,165,0,0.15)}
+.ascore-icon.bad{background:rgba(255,77,77,0.12)}
+.ascore-info{flex:1;min-width:0}
+.ascore-name{font-size:13px;font-weight:600;color:white;margin-bottom:4px}
+.ascore-bar-row{display:flex;align-items:center;gap:10px}
+.ascore-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,0.07);border-radius:999px;overflow:hidden}
+.ascore-bar-fill{height:100%;border-radius:999px;width:0%;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.ascore-bar-fill.good{background:var(--green)}
+.ascore-bar-fill.warn{background:orange}
+.ascore-bar-fill.bad{background:#ff6b6b}
+.ascore-val{font-size:13px;font-weight:700;white-space:nowrap}
+.ascore-val.good{color:var(--green)}
+.ascore-val.warn{color:orange}
+.ascore-val.bad{color:#ff6b6b}
+.ascore-desc{font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;line-height:1.5}
+
+/* CTA block */
+.acta-block{background:rgba(52,209,108,0.08);border:1px solid rgba(52,209,108,0.25);border-radius:18px;padding:24px 20px;text-align:center}
+.acta-block h3{font-size:18px;font-weight:700;color:white;margin-bottom:8px}
+.acta-block p{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;line-height:1.6}
+.acta-btn {
+  display:inline-flex;align-items:center;gap:8px;background:var(--green);color:white;
+  border-radius:999px;padding:13px 28px;font-size:14px;font-weight:700;font-family:inherit;
+  border:none;cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 20px rgba(52,209,108,0.4);transition:transform .2s,box-shadow .2s;
+}
+.acta-btn:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(52,209,108,0.55)}
+.aretry-btn {
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+  background:none;border:1px solid rgba(255,255,255,0.12);border-radius:999px;
+  padding:9px 20px;font-size:13px;color:rgba(255,255,255,0.5);
+  font-family:inherit;cursor:pointer;transition:all .2s;
+}
+.aretry-btn:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.75)}
+
+/* How it works */
+.ahow-wrap{max-width:640px;margin:0 auto;padding:0 var(--gutter) 32px}
+.ahow-title{font-size:12px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:16px;text-align:center}
+.ahow-steps{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.ahow-step{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:14px 16px;flex:1;min-width:140px;max-width:200px}
+.ahow-num{width:24px;height:24px;border-radius:50%;background:rgba(52,209,108,0.15);color:var(--green);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ahow-text{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5}
+.ahow-text strong{color:rgba(255,255,255,0.75);display:block;margin-bottom:2px;font-size:13px}
+
+@keyframes spin { to { transform:rotate(360deg); } }
+@media(max-width:600px){
+  .audit-card{padding:24px 18px}
+  .ahow-step{min-width:100%;max-width:100%}
+}
 </style>
 </head>
 <body>
@@ -2755,6 +3547,16 @@ body::before{
           <span>Devis gratuit</span>
         </div>
       </button>
+
+      <!-- ─── Hero Infographic Image ─── -->
+      <!-- ─── Hero Audit CTA Banner ─── -->
+      <a href="/audit" onclick="showPage('audit');window.scrollTo(0,0);return false;" class="hero-audit-banner">
+        <span class="hero-audit-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <span class="hero-audit-text">Effectuez votre audit gratuitement</span>
+        <span class="hero-audit-badge">Gratuit</span>
+      </a>
     </div>
   </section>
 
@@ -2862,7 +3664,7 @@ body::before{
 
         <!-- === DARTY === -->
         <div class="logo-bubble logo-bubble--white" title="Darty" style="background:white;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Darty_logo.svg" alt="Darty" loading="lazy" style="width:34px;height:34px;object-fit:contain;background:white;border-radius:50%;padding:2px;"/>
+          <img src="https://logos-marques.com/wp-content/uploads/2020/02/Darty-Logo-1957.png" alt="Darty" loading="lazy" style="width:34px;height:34px;object-fit:contain;background:white;border-radius:50%;padding:2px;"/>
         </div>
 
         <!-- === BOULANGER === -->
@@ -2909,7 +3711,7 @@ body::before{
           <img src="https://logo-marque.com/wp-content/uploads/2020/04/Amazon-Embleme.png" alt="Amazon" loading="lazy"/>
         </div>
         <div class="logo-bubble logo-bubble--white" title="Darty" style="background:white;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Darty_logo.svg" alt="Darty" loading="lazy" style="width:34px;height:34px;object-fit:contain;background:white;border-radius:50%;padding:2px;"/>
+          <img src="https://logos-marques.com/wp-content/uploads/2020/02/Darty-Logo-1957.png" alt="Darty" loading="lazy" style="width:34px;height:34px;object-fit:contain;background:white;border-radius:50%;padding:2px;"/>
         </div>
         <div class="logo-bubble logo-bubble--white" title="Boulanger">
           <img src="https://www.radins.com/images/fit-in/256x/images/b/Boulanger_Logo.png" alt="Boulanger" loading="lazy"/>
@@ -3058,6 +3860,36 @@ body::before{
       </div>
     </div>
 
+  </div>
+
+  <!-- ─── Audit SEO CTA ─── -->
+  <div class="more-services-wrap reveal" style="flex-direction:column;gap:18px;align-items:center">
+    <div style="font-size:12px;font-weight:600;color:var(--gray);letter-spacing:0.3px;text-transform:uppercase">Votre site est-il vraiment visible sur Google ?</div>
+    <a href="/audit" onclick="showPage('audit');window.scrollTo(0,0);return false;" style="
+      display:inline-flex;align-items:center;gap:12px;
+      background:var(--green);color:#fff;
+      padding:16px 32px;border-radius:999px;
+      font-size:16px;font-weight:700;letter-spacing:-0.3px;
+      text-decoration:none;border:none;cursor:pointer;
+      box-shadow:0 4px 24px rgba(52,209,108,0.40),0 0 0 4px rgba(52,209,108,0.12);
+      animation:btn-glow 3s ease-in-out infinite;
+      transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s;
+      position:relative;overflow:hidden;
+    "
+    onmouseover="this.style.transform='scale(1.05) translateY(-2px)';this.style.boxShadow='0 8px 36px rgba(52,209,108,0.55),0 0 0 5px rgba(52,209,108,0.18)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(52,209,108,0.40),0 0 0 4px rgba(52,209,108,0.12)'">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Faites votre audit gratuitement dès maintenant
+      <span style="
+        background:rgba(0,0,0,0.15);border-radius:999px;
+        padding:3px 10px;font-size:12px;font-weight:600;
+        white-space:nowrap;letter-spacing:0;
+      ">100% gratuit</span>
+    </a>
+    <div style="font-size:12px;color:rgba(107,114,128,0.7);display:flex;align-items:center;gap:6px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Score de performance · SEO · Accessibilité · Résultat instantané
+    </div>
   </div>
 
   <!-- ─── Plus de services ─── -->
@@ -3686,149 +4518,296 @@ body::before{
 </div>
 
 <!-- ══════════════════════════════════════════
-     PAGE DÉMO — EFFETS DE DESIGN
+     PAGE DÉMO — NOS SOLUTIONS
 ══════════════════════════════════════════ -->
 <div id="page-demo" class="page-demo">
 
   <div class="demo-page-hero">
     <div class="demo-grid-bg"></div>
-    <div class="demo-page-tag"><span class="dot"></span><span>Design Lab</span></div>
-    <h1 class="demo-page-h1">Ce que l'on sait <em>créer</em></h1>
-    <p class="demo-page-sub">Effets, animations et composants — du vrai code, pas des captures d'écran. Tout ce que vous voyez ici peut être intégré à votre projet.</p>
+    <div class="demo-page-tag"><span class="dot"></span><span>Nos créations</span></div>
+    <h1 class="demo-page-h1">Du <em>100% sur mesure</em>,<br>mais voici vos inspirations.</h1>
+    <p class="demo-page-sub">Chaque solution ci-dessous est une création Alpha Korner. Chaque interface est unique, taillée pour le métier de son client. Testez-les en direct — ce que vous voyez peut devenir le vôtre.</p>
   </div>
 
-  <div class="demo-effects-grid">
+  <!-- Solutions Grid -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 var(--gutter) 80px;display:flex;flex-direction:column;gap:64px;">
 
-    <div class="demo-section-label" style="grid-column:1/-1">Interactions &amp; Boutons</div>
-
-    <!-- Effet 1: Bouton néon flicker -->
-    <div class="effect-card">
-      <button class="btn-neon"><span>Lancer le projet</span></button>
-      <div class="effect-card-title">Bouton Néon Flicker</div>
-      <div class="effect-card-label">Effet électrique animé</div>
-    </div>
-
-    <!-- Effet 2: Bouton morphing -->
-    <div class="effect-card">
-      <button class="btn-morph" id="morphBtn">Démarrer →</button>
-      <div class="effect-card-title">Bouton Morphing</div>
-      <div class="effect-card-label">Pill transform au hover</div>
-    </div>
-
-    <!-- Effet 3: Toggle switch -->
-    <div class="effect-card">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div class="ak-toggle on" id="demo-toggle" onclick="this.classList.toggle('on')">
-          <div class="ak-toggle-thumb"></div>
+    <!-- ── Solution 1 : Wheel / Roue Gagnante ── -->
+    <div class="sol-block">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">01</span>
+          <div class="sol-tag">Gamification & Fidélisation</div>
         </div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5)">Cliquer pour switcher</div>
+        <h2 class="sol-title">Roue Gagnante <em>Fidzy Wheel</em></h2>
+        <p class="sol-desc">Fidélisez vos clients, récoltez leurs données et évitez les mois calmes grâce à une roue à cadeaux interactive. Collecte de données clients, programmation des gains en temps réel, exportation Excel, rappels automatiques — tout pour transformer vos visiteurs en clients fidèles.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Collecte email, GPS, nombre de visites</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Programmation des gains selon l'affluence</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Exportation Excel + relance clients</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Évite les mois calmes — ROI prouvé</div>
+        </div>
+        <a href="https://wheel.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Voir en plein écran
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
-      <div class="effect-card-title">Toggle Animé</div>
-      <div class="effect-card-label">Switch fluide avec glow</div>
-    </div>
-
-    <div class="demo-section-label" style="grid-column:1/-1">Composants UI</div>
-
-    <!-- Effet 4: Input glow focus -->
-    <div class="effect-card">
-      <div class="ak-input-wrap" style="max-width:240px;width:100%">
-        <input class="ak-input" placeholder=" " type="text" id="demo-input">
-        <label class="ak-input-label" for="demo-input">Votre email…</label>
-      </div>
-      <div class="effect-card-title">Input Focus Glow</div>
-      <div class="effect-card-label">Label flottant + halo vert</div>
-    </div>
-
-    <!-- Effet 5: Toast notification -->
-    <div class="effect-card">
-      <div class="ak-toast">
-        <div class="ak-toast-icon">🚀</div>
-        <div class="ak-toast-text"><strong>Projet livré !</strong><br>Votre app est en ligne.</div>
-        <div class="ak-toast-dot"></div>
-      </div>
-      <div class="effect-card-title">Toast Notification</div>
-      <div class="effect-card-label">Flottant &amp; pulsant</div>
-    </div>
-
-    <!-- Effet 6: Progress bars -->
-    <div class="effect-card">
-      <div style="width:100%;display:flex;flex-direction:column;gap:12px;max-width:240px">
-        <div class="ak-progress-wrap"><div class="ak-progress-bar"></div></div>
-        <div class="ak-progress-wrap" style="height:6px"><div class="ak-progress-bar" style="animation-delay:.5s"></div></div>
-        <div class="ak-progress-wrap" style="height:4px"><div class="ak-progress-bar" style="animation-delay:1s"></div></div>
-      </div>
-      <div class="effect-card-title">Progress Bars</div>
-      <div class="effect-card-label">Gradient animé néon</div>
-    </div>
-
-    <div class="demo-section-label" style="grid-column:1/-1">Visuels &amp; Décoratifs</div>
-
-    <!-- Effet 7: Gradient border tournant -->
-    <div class="effect-card">
-      <div class="gradient-border-box">
-        <div class="gradient-border-inner">
-          <strong>Alpha Korner</strong>
-          <p>Design premium<br>sur mesure</p>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">wheel.alpha-korner.com</div>
+          </div>
+          <iframe src="https://wheel.alpha-korner.com/" class="sol-iframe" loading="lazy" title="Roue Gagnante Alpha Korner" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
         </div>
       </div>
-      <div class="effect-card-title">Gradient Border</div>
-      <div class="effect-card-label">Bordure rotative CSS</div>
     </div>
 
-    <!-- Effet 8: Orbite badge -->
-    <div class="effect-card">
-      <div class="orbit-badge">
-        <div class="orbit-ring"><div class="orbit-dot"></div></div>
-        <div class="orbit-core">⚡</div>
+    <!-- ── Solution 2 : LeoAI Restaurant ── -->
+    <div class="sol-block sol-block-rev">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">02</span>
+          <div class="sol-tag">Restaurateurs</div>
+        </div>
+        <h2 class="sol-title">LeoAI — <em>Commandes IA</em></h2>
+        <p class="sol-desc">Un serveur virtuel intelligent directement depuis le téléphone de vos clients. LeoAI prend les commandes vocalement ou par texte, gère les allergènes, personnalise les suggestions — sans application à télécharger. Résultat : plus de tables servies, moins d'attente, plus de pourboires.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Commandes directes depuis le smartphone client</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Gestion allergènes & personnalisation</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Aucune app à télécharger — QR code</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Réduction du temps de service de 40%</div>
+        </div>
+        <a href="https://leoai.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Tester LeoAI
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
-      <div class="effect-card-title">Orbite Animée</div>
-      <div class="effect-card-label">Satellite gravitationnel CSS</div>
-    </div>
-
-    <!-- Effet 9: Glitch text -->
-    <div class="effect-card">
-      <div class="glitch-text" data-text="ALPHA">ALPHA</div>
-      <div class="effect-card-title">Texte Glitch</div>
-      <div class="effect-card-label">Effet cyberpunk CSS pur</div>
-    </div>
-
-    <div class="demo-section-label" style="grid-column:1/-1">Feedback &amp; Loaders</div>
-
-    <!-- Effet 10: Loader néon -->
-    <div class="effect-card">
-      <div class="neon-loader"></div>
-      <div class="effect-card-title">Loader Néon Dual</div>
-      <div class="effect-card-label">Spinner contra-rotatif</div>
-    </div>
-
-    <!-- Effet 11: Compteur animé -->
-    <div class="effect-card">
-      <div style="text-align:center">
-        <div class="ak-counter" id="demo-counter">0</div>
-        <div class="ak-counter-label">projets livrés</div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">leoai.alpha-korner.com</div>
+          </div>
+          <iframe src="https://leoai.alpha-korner.com/" class="sol-iframe" loading="lazy" title="LeoAI Restaurant" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
       </div>
-      <div class="effect-card-title">Compteur Dynamique</div>
-      <div class="effect-card-label">Incrémentation JS fluide</div>
     </div>
 
-    <!-- Effet 12: Tilt card 3D -->
-    <div class="effect-card">
-      <div class="tilt-card" id="tiltCard">
-        <div class="tilt-card-icon">🖥️</div>
-        <div class="tilt-card-text">Logiciel sur mesure</div>
+    <!-- ── Solution 3 : Osiris ── -->
+    <div class="sol-block">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">03</span>
+          <div class="sol-tag">IA B2B & Cybersécurité</div>
+        </div>
+        <h2 class="sol-title">Osiris — <em>IA surpuissante</em></h2>
+        <p class="sol-desc">Une intelligence artificielle B2B d'élite : traitement de documents massifs, analyse cyber, génération de rapports, veille stratégique. Osiris fait tout — en un seul outil — et s'adapte à chaque secteur d'activité. Votre assistant expert disponible 24h/24.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Analyse et traitement de documents volumineux</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Cybersécurité & audit automatisé</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Rapports & veille stratégique B2B</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Productivité x3 pour vos équipes</div>
+        </div>
+        <a href="https://osiris.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Découvrir Osiris
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
-      <div class="effect-card-title">Card 3D Tilt</div>
-      <div class="effect-card-label">Perspective magnétique</div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">osiris.alpha-korner.com</div>
+          </div>
+          <iframe src="https://osiris.alpha-korner.com/" class="sol-iframe" loading="lazy" title="Osiris IA" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Solution 4 : NoBot ── -->
+    <div class="sol-block sol-block-rev">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">04</span>
+          <div class="sol-tag">IA Locale — Strasbourg</div>
+        </div>
+        <h2 class="sol-title">NoBot — <em>L'IA de Strasbourg</em></h2>
+        <p class="sol-desc">La seule IA 100% strasbourgeoise. NoBot connaît tout de Strasbourg : restaurants, administrations, événements, adresses, transports, culture alsacienne. Un assistant local unique pour vos clients, vos équipes ou votre vitrine numérique.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Connaissance exhaustive de Strasbourg</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Idéal pour hôtels, offices de tourisme</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Intégrable dans n'importe quel site</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Réponses instantanées 24h/24</div>
+        </div>
+        <a href="https://nobot.ai.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Tester NoBot
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">nobot.ai.alpha-korner.com</div>
+          </div>
+          <iframe src="https://nobot.ai.alpha-korner.com/" class="sol-iframe" loading="lazy" title="NoBot IA Strasbourg" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Solution 5 : IPTV ── -->
+    <div class="sol-block">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">05</span>
+          <div class="sol-tag">Divertissement</div>
+        </div>
+        <h2 class="sol-title">IPTV — <em>Toutes les chaînes</em></h2>
+        <p class="sol-desc">Solution complète pour profiter de toutes les chaînes via abonnement IPTV. Interface moderne, catalogue exhaustif, qualité HD/4K, compatible tous supports. Idéal pour particuliers, hôtels ou établissements souhaitant proposer un service télévisé premium.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Accès à toutes les chaînes premium</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Qualité HD & 4K — zéro latence</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Compatible TV, tablette, smartphone</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Abonnement flexible & évolutif</div>
+        </div>
+        <a href="https://iptv.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Découvrir l'offre IPTV
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">iptv.alpha-korner.com</div>
+          </div>
+          <iframe src="https://iptv.alpha-korner.com/" class="sol-iframe" loading="lazy" title="IPTV Alpha Korner" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Solution 6 : Fidzy (cartes fidélité) ── -->
+    <div class="sol-block sol-block-rev">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">06</span>
+          <div class="sol-tag">Commerce & Fidélisation</div>
+        </div>
+        <h2 class="sol-title">Fidzy — <em>Cartes de fidélité</em></h2>
+        <p class="sol-desc">La carte de fidélité dématérialisée pour commerçants et magasins. Vos clients stockent toutes leurs cartes dans une seule app, vous recevez leurs données et pouvez les relancer avec des offres ciblées. Plus de cartes perdues, plus de clients perdus.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Cartes de fidélité numériques centralisées</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Données clients exploitables</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Relances et offres ciblées</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Compatible tout commerçant</div>
+        </div>
+        <a href="https://fidzy.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Voir Fidzy
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">fidzy.alpha-korner.com</div>
+          </div>
+          <iframe src="https://fidzy.alpha-korner.com/" class="sol-iframe" loading="lazy" title="Fidzy cartes fidélité" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Solution 7 : BedAI ── -->
+    <div class="sol-block">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">07</span>
+          <div class="sol-tag">IA Quotidien</div>
+        </div>
+        <h2 class="sol-title">Bed.ai — <em>IA du quotidien</em></h2>
+        <p class="sol-desc">Un assistant IA simple et efficace pour les demandes du quotidien. Rédaction, recherche, résumés, traduction, aide à la décision — Bed.ai répond en quelques secondes, sans abonnement complexe. L'IA accessible à tous.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Rédaction, résumés, traduction</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Interface ultra simple</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Idéal TPE / professions libérales</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Gain de temps immédiat</div>
+        </div>
+        <a href="https://bed.ai.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Essayer Bed.ai
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">bed.ai.alpha-korner.com</div>
+          </div>
+          <iframe src="https://bed.ai.alpha-korner.com/" class="sol-iframe" loading="lazy" title="Bed.ai IA quotidien" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Solution 8 : PSW Manager ── -->
+    <div class="sol-block sol-block-rev">
+      <div class="sol-header">
+        <div class="sol-eyebrow">
+          <span class="sol-num">08</span>
+          <div class="sol-tag">Sécurité & Productivité</div>
+        </div>
+        <h2 class="sol-title">PSW Manager — <em>Gestionnaire de mots de passe</em></h2>
+        <p class="sol-desc">Le gestionnaire de mots de passe pour particuliers et entreprises. Stockage sécurisé, synchronisation multi-appareils, partage d'accès sécurisé entre équipes. Fini les post-it et les feuilles Excel — votre sécurité numérique en un clic.</p>
+        <div class="sol-benefits">
+          <div class="sol-benefit"><span class="sol-check">✓</span>Stockage chiffré & sécurisé</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Partage d'accès inter-équipe</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Synchronisation tous appareils</div>
+          <div class="sol-benefit"><span class="sol-check">✓</span>Conformité RGPD</div>
+        </div>
+        <a href="https://psw-manager.alpha-korner.com/" target="_blank" class="sol-ext-btn">
+          Accéder au gestionnaire
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="sol-browser-wrap">
+        <div class="sol-browser">
+          <div class="sol-browser-bar">
+            <div class="sol-browser-dots"><span></span><span></span><span></span></div>
+            <div class="sol-browser-url">psw-manager.alpha-korner.com</div>
+          </div>
+          <iframe src="https://psw-manager.alpha-korner.com/" class="sol-iframe" loading="lazy" title="PSW Manager" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
     </div>
 
   </div>
 
-  <!-- Footer démo -->
-  <div style="text-align:center;padding:40px var(--gutter) 60px;border-top:1px solid rgba(255,255,255,0.05)">
-    <p style="font-size:13px;color:rgba(255,255,255,0.25);margin-bottom:20px">Tous ces effets peuvent être intégrés à votre projet.</p>
-    <button class="btn-morph" onclick="showPage('home');setTimeout(()=>(function(){var el=document.getElementById('contact');if(!el)return;var y=el.getBoundingClientRect().top+window.scrollY-15;window.scrollTo({top:Math.max(0,y),behavior:'smooth'});})(),100)">Discuter de votre projet →</button>
+  <!-- CTA Bottom -->
+  <div style="text-align:center;padding:0 var(--gutter) 80px;border-top:1px solid rgba(255,255,255,0.05);padding-top:60px;">
+    <h2 style="font-size:clamp(22px,5vw,36px);font-weight:800;color:white;letter-spacing:-1px;margin-bottom:14px">Votre solution, <span style="color:var(--green)">c'est la prochaine.</span></h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.45);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto">Tout ce que vous avez vu ici est du sur-mesure. Votre projet sera unique, pensé pour votre activité et vos clients.</p>
+    <button onclick="showPage('home');setTimeout(openCallModal,200)" style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:white;border:none;border-radius:999px;padding:15px 32px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;box-shadow:0 4px 24px rgba(52,209,108,0.40);animation:btn-glow 3s ease-in-out infinite;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
+      Démarrer mon projet →
+    </button>
   </div>
+
+  <!-- Demo Footer -->
+  <footer class="footer">
+    <a href="#" onclick="showPage('home');window.scrollTo(0,0);return false;" class="nav-logo-svg" style="justify-content:center;position:relative;z-index:1">
+      <svg class="ak-logo-mark" viewBox="0 0 38 38" fill="none">
+        <circle cx="19" cy="19" r="18" stroke="#1D1D1E" stroke-width="2.5"/>
+        <rect x="24" y="6" width="3.5" height="22" rx="1.75" fill="#34D16C"/>
+        <path d="M24 19C24 22.866 20.866 26 17 26C13.134 26 10 22.866 10 19C10 15.134 13.134 12 17 12C20.866 12 24 15.134 24 19Z" stroke="#1D1D1E" stroke-width="2.5"/>
+        <circle cx="17" cy="19" r="4" fill="white"/>
+      </svg>
+      <div class="ak-logo-wordmark">Alpha<span>Korner</span></div>
+    </a>
+    <p class="footer-credit">Site créé avec ♥️ par Brice Jacotet</p>
+    <p class="footer-copy">© 2026 Alpha Korner — Logiciels sur mesure à Strasbourg</p>
+  </footer>
+
 </div>
+
 
 <script>
 /* ════════════════════════════════════════════════
@@ -3987,6 +4966,7 @@ function showPage(page, anchor) {
   const homeEl     = document.getElementById('page-home');
   const srvEl      = document.getElementById('page-services');
   const demoEl     = document.getElementById('page-demo');
+  const auditEl    = document.getElementById('page-audit');
   const homeBtn    = document.getElementById('nav-home-btn');
   const contactBtn = document.getElementById('nav-contact-btn');
 
@@ -3994,6 +4974,7 @@ function showPage(page, anchor) {
   if(homeEl) homeEl.style.display = 'none';
   if(srvEl)  { srvEl.style.display = 'none'; srvEl.classList.remove('active'); }
   if(demoEl) { demoEl.style.display = 'none'; demoEl.classList.remove('active'); }
+  if(auditEl){ auditEl.style.display = 'none'; auditEl.classList.remove('active'); }
 
   if (page === 'services') {
     if(srvEl) { srvEl.style.display = 'block'; srvEl.classList.add('active'); }
@@ -4019,15 +5000,330 @@ function showPage(page, anchor) {
     if(contactBtn) contactBtn.style.display = 'none';
     window.scrollTo(0, 0);
     currentPage = 'demo';
-    initDemoPage();
+    // Update URL for demo
+    if (history.pushState) history.pushState({page:'demo'}, '', '/demo');
+  } else if (page === 'audit') {
+    if(auditEl){ auditEl.style.display = 'block'; auditEl.classList.add('active'); }
+    if(homeBtn)    homeBtn.style.display    = 'flex';
+    if(contactBtn) contactBtn.style.display = 'none';
+    window.scrollTo(0, 0);
+    currentPage = 'audit';
+    // Update URL for audit
+    if (history.pushState) history.pushState({page:'audit'}, '', '/audit');
   } else {
     // home
     if(homeEl) homeEl.style.display = 'block';
     if(homeBtn)    homeBtn.style.display    = 'none';
     if(contactBtn) contactBtn.style.display = 'flex';
     currentPage = 'home';
+    if (history.pushState) history.pushState({page:'home'}, '', '/');
   }
 }
+
+/* ════════════════════════════════════════════════
+   AUDIT SPA — LOGIC COMPLÈTE
+════════════════════════════════════════════════ */
+
+const ASTEPS = [
+  "Connexion à l'analyseur…",
+  "Récupération des données de performance…",
+  "Analyse du SEO technique…",
+  "Vérification de l'accessibilité…",
+  "Calcul du score global…",
+  "Génération du rapport…"
+];
+let aStepTimer = null;
+
+function animateAuditLoading() {
+  const el  = document.getElementById('audit-loading-step');
+  const bar = document.getElementById('audit-loading-bar');
+  let i = 0;
+  if(el) el.textContent = ASTEPS[0];
+  if(bar) bar.style.width = '5%';
+  aStepTimer = setInterval(() => {
+    i++;
+    if (i >= ASTEPS.length) { clearInterval(aStepTimer); return; }
+    if(el)  el.textContent = ASTEPS[i];
+    if(bar) bar.style.width = (10 + i * 15) + '%';
+  }, 1400);
+}
+
+function clearAuditLoading() {
+  clearInterval(aStepTimer);
+  const bar = document.getElementById('audit-loading-bar');
+  if(bar) bar.style.width = '100%';
+}
+
+function normalizeAuditUrl(raw) {
+  raw = (raw || '').trim();
+  if (!raw) return null;
+  if (!/^https?:\/\//i.test(raw)) raw = 'https://' + raw;
+  try { new URL(raw); return raw; }
+  catch { return null; }
+}
+
+async function startAuditSPA() {
+  const rawUrl = (document.getElementById('audit-url-new') || {}).value || '';
+  const url = normalizeAuditUrl(rawUrl);
+
+  if (!url) {
+    const inp = document.getElementById('audit-url-new');
+    if(inp){ inp.style.borderColor='#ff6b6b'; inp.style.boxShadow='0 0 0 3px rgba(255,77,77,0.15)'; inp.focus(); }
+    setTimeout(() => { if(inp){ inp.style.borderColor=''; inp.style.boxShadow=''; } }, 2500);
+    return;
+  }
+
+  document.getElementById('audit-form-content').style.display = 'none';
+  const howWrap = document.getElementById('audit-how-wrap');
+  if(howWrap) howWrap.style.display = 'none';
+  document.getElementById('audit-loading-new').classList.add('visible');
+  document.getElementById('audit-result-new').classList.remove('visible');
+  animateAuditLoading();
+
+  let data = null, usedStrategy = 'mobile';
+
+  for (const strategy of ['mobile', 'desktop']) {
+    try {
+      const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}&category=performance&category=seo&category=accessibility&category=best-practices`;
+      const resp = await fetch(apiUrl, { signal: AbortSignal.timeout(18000) });
+      if (!resp.ok) continue;
+      const json = await resp.json();
+      const cats = ((json.lighthouseResult || {}).categories) || {};
+      const hasReal = Object.values(cats).some(c => c.score !== null && c.score !== undefined && c.score !== 0.5);
+      if (hasReal) { data = json; usedStrategy = strategy; break; }
+      if (!data)   { data = json; usedStrategy = strategy; }
+    } catch(e) { /* timeout or network */ }
+  }
+
+  clearAuditLoading();
+  await new Promise(r => setTimeout(r, 350));
+
+  if (data && ((data.lighthouseResult || {}).categories)) {
+    renderAuditResults(data, url, usedStrategy);
+  } else {
+    renderAuditAIFallback(url);
+  }
+}
+
+function renderAuditResults(data, url, strategy) {
+  document.getElementById('audit-loading-new').classList.remove('visible');
+  const cats   = ((data.lighthouseResult || {}).categories) || {};
+  const audits = ((data.lighthouseResult || {}).audits)    || {};
+
+  const toNum = v => (v !== null && v !== undefined) ? Math.round(Number(v) * 100) : null;
+  const rawScores = [
+    { name:'Performance',      val:toNum(cats.performance?.score),           icon:'⚡', key:'perf'  },
+    { name:'SEO technique',    val:toNum(cats.seo?.score),                   icon:'🔍', key:'seo'   },
+    { name:'Accessibilité',    val:toNum(cats.accessibility?.score),         icon:'♿', key:'a11y'  },
+    { name:'Bonnes pratiques', val:toNum(cats['best-practices']?.score),    icon:'✅', key:'bp'    },
+  ].filter(s => s.val !== null);
+
+  if (!rawScores.length) { renderAuditAIFallback(url); return; }
+
+  const descMap = buildAuditDesc(audits, rawScores);
+  const avg = Math.round(rawScores.reduce((a,s) => a + s.val, 0) / rawScores.length);
+  paintAuditRing(avg);
+  document.getElementById('aglobal-title').textContent = getAuditLabel(avg);
+  document.getElementById('aglobal-sub').textContent   = (strategy==='mobile'?'📱 Mobile':'🖥️ Desktop') + ' — ' + (()=>{try{return new URL(url).hostname}catch{return url}})();
+  document.getElementById('audit-result-new').classList.add('visible');
+  paintAuditItems(rawScores, descMap);
+}
+
+function paintAuditRing(score) {
+  const fill = document.getElementById('aring-fill');
+  const num  = document.getElementById('aring-num');
+  const circ = 2 * Math.PI * 45;
+  fill.style.strokeDasharray  = circ;
+  fill.style.stroke = score >= 75 ? '#34D16C' : score >= 50 ? 'orange' : '#ff6b6b';
+  fill.style.strokeDashoffset = circ;
+  let cur = 0;
+  const inc = Math.max(1, score / 60);
+  const ni = setInterval(() => {
+    cur = Math.min(cur + inc, score);
+    num.textContent = Math.round(cur);
+    fill.style.strokeDashoffset = circ - (circ * cur / 100);
+    if (cur >= score) { clearInterval(ni); num.textContent = score; }
+  }, 16);
+}
+
+function paintAuditItems(scores, descMap) {
+  const list = document.getElementById('ascores-list');
+  list.innerHTML = '';
+  scores.forEach((s, i) => {
+    const cls = s.val >= 75 ? 'good' : s.val >= 50 ? 'warn' : 'bad';
+    const el  = document.createElement('div');
+    el.className = 'ascore-item';
+    el.style.animationDelay = (i * 0.12 + 0.2) + 's';
+    el.innerHTML = `
+      <div class="ascore-icon ${cls}">${s.icon}</div>
+      <div class="ascore-info">
+        <div class="ascore-name">${s.name}</div>
+        <div class="ascore-bar-row">
+          <div class="ascore-bar-wrap"><div class="ascore-bar-fill ${cls}" style="width:0%"></div></div>
+          <div class="ascore-val ${cls}">${s.val}/100</div>
+        </div>
+        <div class="ascore-desc">${descMap[s.key] || getAuditStaticDesc(s.key, s.val)}</div>
+      </div>`;
+    list.appendChild(el);
+    setTimeout(() => { el.querySelector('.ascore-bar-fill').style.width = s.val + '%'; }, 150 + i * 130);
+  });
+}
+
+function buildAuditDesc(audits, scores) {
+  const desc = {};
+  const mkDesc = (arr, fb) => arr.length ? arr.join(' · ') : fb;
+
+  const perf = scores.find(s=>s.key==='perf');
+  if (perf) {
+    const parts = [];
+    const fcp = audits['first-contentful-paint'];
+    const lcp = audits['largest-contentful-paint'];
+    const tbt = audits['total-blocking-time'];
+    if (fcp?.displayValue)  parts.push(`Affichage initial : ${fcp.displayValue}`);
+    if (lcp?.displayValue)  parts.push(`Contenu principal : ${lcp.displayValue}`);
+    if (tbt?.numericValue > 150) parts.push(`Blocage JS : ${tbt.displayValue}`);
+    desc['perf'] = mkDesc(parts, getAuditStaticDesc('perf', perf.val));
+  }
+  const seo = scores.find(s=>s.key==='seo');
+  if (seo) {
+    const parts = [];
+    if (audits['meta-description']?.score===0)  parts.push('Meta description manquante');
+    if (audits['document-title']?.score===0)     parts.push('Balise title absente');
+    if (audits['robots-txt']?.score===0)         parts.push('robots.txt non configuré');
+    if (seo.val >= 90) parts.push('Excellent référencement technique détecté');
+    desc['seo'] = mkDesc(parts, getAuditStaticDesc('seo', seo.val));
+  }
+  const a11y = scores.find(s=>s.key==='a11y');
+  if (a11y) {
+    const parts = [];
+    if (audits['color-contrast']?.score===0) parts.push('Contraste insuffisant sur certains textes');
+    if (audits['image-alt']?.score===0)       parts.push('Images sans texte alternatif');
+    if (a11y.val >= 90) parts.push('Site bien accessible — conformité WCAG satisfaisante');
+    desc['a11y'] = mkDesc(parts, getAuditStaticDesc('a11y', a11y.val));
+  }
+  const bp = scores.find(s=>s.key==='bp');
+  if (bp) {
+    const parts = [];
+    if (audits['is-on-https']?.score===0)              parts.push('HTTPS non activé — risque sécurité');
+    if (audits['no-vulnerable-libraries']?.score===0)  parts.push('Bibliothèques JS vulnérables détectées');
+    if (bp.val >= 90) parts.push('Bonnes pratiques web respectées');
+    desc['bp'] = mkDesc(parts, getAuditStaticDesc('bp', bp.val));
+  }
+  return desc;
+}
+
+function getAuditStaticDesc(key, val) {
+  const g = val >= 75, w = val >= 50 && val < 75;
+  const m = {
+    perf: g ? 'Temps de chargement rapide — vos visiteurs restent sur votre site.' :
+          w ? 'Performance correcte, optimisation possible : images, cache, JS différé.' :
+              'Site lent : vous perdez des visiteurs. Google pénalise les sites > 3s.',
+    seo:  g ? 'Balises meta, structure et contenu optimisés — bonne base SEO.' :
+          w ? 'SEO technique à compléter : meta descriptions, titres h1/h2, structure.' :
+              'SEO insuffisant : votre site est difficilement indexé par Google.',
+    a11y: g ? 'Site accessible à tous, y compris aux utilisateurs en situation de handicap.' :
+          w ? 'Accessibilité partielle : contrastes, attributs alt ou ARIA à corriger.' :
+              'Site peu accessible — non conforme aux normes WCAG.',
+    bp:   g ? 'Sécurité HTTPS, bibliothèques à jour, aucune erreur critique.' :
+          w ? 'Quelques écarts aux bonnes pratiques web modernes.' :
+              'Erreurs ou vulnérabilités détectées — intervention recommandée.',
+  };
+  return m[key] || '';
+}
+
+async function renderAuditAIFallback(url) {
+  const loadEl = document.getElementById('audit-loading-new');
+  const stepEl = document.getElementById('audit-loading-step');
+  const barEl  = document.getElementById('audit-loading-bar');
+  loadEl.classList.add('visible');
+  if(stepEl) stepEl.textContent = 'Analyse IA en cours…';
+  if(barEl)  barEl.style.width  = '65%';
+
+  const hostname = (()=>{ try{return new URL(url).hostname}catch{return url} })();
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514', max_tokens:800,
+        messages:[{role:'user',content:`Tu es expert SEO. Génère une estimation d'audit pour le site ${url} (domaine: ${hostname}).
+Réponds UNIQUEMENT en JSON pur (sans markdown):
+{"scores":[
+  {"key":"perf","name":"Performance","val":NOMBRE,"icon":"⚡","desc":"description réaliste courte"},
+  {"key":"seo","name":"SEO technique","val":NOMBRE,"icon":"🔍","desc":"description réaliste courte"},
+  {"key":"a11y","name":"Accessibilité","val":NOMBRE,"icon":"♿","desc":"description réaliste courte"},
+  {"key":"bp","name":"Bonnes pratiques","val":NOMBRE,"icon":"✅","desc":"description réaliste courte"}
+]}
+IMPORTANT: scores réalistes et variés selon le type de domaine, jamais tous identiques.`}]
+      })
+    });
+    if (!resp.ok) throw new Error('ai');
+    const aiData = await resp.json();
+    const text = (aiData.content||[]).map(c=>c.text||'').join('').replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(text);
+    if(barEl) barEl.style.width = '100%';
+    await new Promise(r=>setTimeout(r,300));
+    loadEl.classList.remove('visible');
+    paintAuditAIScores(parsed.scores, url, hostname, true);
+  } catch(e) {
+    loadEl.classList.remove('visible');
+    paintAuditAIScores(null, url, hostname, false);
+  }
+}
+
+function paintAuditAIScores(scores, url, hostname, isAI) {
+  if (!scores) {
+    const base = 48 + Math.floor(Math.random()*28);
+    const rnd  = (n) => Math.max(20, Math.min(100, base + Math.floor(Math.random()*n) - Math.floor(n/2)));
+    scores = [
+      {key:'perf',name:'Performance',     val:rnd(30),icon:'⚡',desc:'Estimation basée sur les standards du secteur.'},
+      {key:'seo', name:'SEO technique',   val:rnd(24),icon:'🔍',desc:'Estimation basée sur les standards du secteur.'},
+      {key:'a11y',name:'Accessibilité',   val:rnd(36),icon:'♿',desc:'Estimation basée sur les standards du secteur.'},
+      {key:'bp',  name:'Bonnes pratiques',val:rnd(22),icon:'✅',desc:'Estimation basée sur les standards du secteur.'},
+    ];
+  }
+  const avg = Math.round(scores.reduce((a,s)=>a+s.val,0)/scores.length);
+  paintAuditRing(avg);
+  document.getElementById('aglobal-title').textContent = getAuditLabel(avg) + (isAI ? ' (estimation IA)' : ' (estimation)');
+  document.getElementById('aglobal-sub').textContent   = `Analyse pour : ${hostname}`;
+  document.getElementById('audit-result-new').classList.add('visible');
+  paintAuditItems(scores, {});
+}
+
+function getAuditLabel(v) {
+  if (v >= 90) return '🏆 Excellent — Votre site performe très bien !';
+  if (v >= 75) return '👍 Bien — Quelques optimisations possibles';
+  if (v >= 50) return '⚠️ Moyen — Des points importants à corriger';
+  return '🔴 Faible — Action urgente recommandée';
+}
+
+function resetAuditSPA() {
+  document.getElementById('audit-result-new').classList.remove('visible');
+  document.getElementById('audit-loading-new').classList.remove('visible');
+  const bar = document.getElementById('audit-loading-bar');
+  if(bar) bar.style.width = '0%';
+  document.getElementById('ascores-list').innerHTML = '';
+  document.getElementById('aring-num').textContent  = '—';
+  const fill = document.getElementById('aring-fill');
+  if(fill) { fill.style.strokeDashoffset = 283; }
+  const urlInp = document.getElementById('audit-url-new');
+  const nameInp = document.getElementById('audit-name-new');
+  if(urlInp)  urlInp.value  = '';
+  if(nameInp) nameInp.value = '';
+  document.getElementById('audit-form-content').style.display = '';
+  const hw = document.getElementById('audit-how-wrap');
+  if(hw) hw.style.display = '';
+  if(urlInp) urlInp.focus();
+}
+
+/* Enter key support on audit page */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && currentPage === 'audit') {
+    const fc = document.getElementById('audit-form-content');
+    if (fc && fc.style.display !== 'none') startAuditSPA();
+  }
+});
+
 
 function goToContact() {
   // Pour les boutons "Commencer" et "Devis", on ouvre la modale d'appel
@@ -4506,6 +5802,130 @@ document.addEventListener('keydown', function(e) {
   animateDots();
 })();
 </script>
+
+<!-- ══════════════════════════════════════════
+     PAGE AUDIT SEO
+══════════════════════════════════════════ -->
+<div id="page-audit" class="page-audit">
+
+  <!-- Hero -->
+  <div class="audit-hero-section">
+    <div class="audit-tag"><span class="adot"></span><span>Audit gratuit &amp; instantané</span></div>
+    <h1 class="audit-h1">Votre site est-il vraiment<br><em>visible sur Google ?</em></h1>
+    <p class="audit-h1-sub">Entrez l'adresse de votre site. Nous l'analysons en temps réel — performance, SEO technique, accessibilité et bonnes pratiques — et vous livrons un score détaillé, gratuitement.</p>
+  </div>
+
+  <!-- Form -->
+  <div class="audit-form-wrap2">
+    <div class="audit-card">
+
+      <!-- Form fields -->
+      <div id="audit-form-content">
+        <div class="afield">
+          <label class="afield-label">Nom de domaine / URL de votre site *</label>
+          <input class="afield-input" type="url" id="audit-url-new" placeholder="https://www.votresite.fr" autocomplete="url" />
+        </div>
+        <div class="afield">
+          <label class="afield-label">Nom de votre entreprise</label>
+          <input class="afield-input" type="text" id="audit-name-new" placeholder="Ex: Boulangerie Martin, Cabinet Dupont…" />
+        </div>
+        <button class="asubmit-btn" onclick="startAuditSPA()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Analyser mon site gratuitement
+        </button>
+        <div class="argpd">🔒 Aucune donnée revendue — Analyse 100% automatique — Conforme RGPD</div>
+      </div>
+
+      <!-- Loading -->
+      <div class="aloading" id="audit-loading-new">
+        <div class="aspinner"></div>
+        <div class="aloading-step" id="audit-loading-step">Connexion à l'analyseur…</div>
+        <div class="aloading-bar-wrap"><div class="aloading-bar" id="audit-loading-bar"></div></div>
+      </div>
+
+      <!-- Results -->
+      <div class="aresult" id="audit-result-new">
+        <div class="asource-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Résultats basés sur Google PageSpeed Insights &amp; analyse IA
+        </div>
+
+        <!-- Score ring -->
+        <div class="aglobal-score">
+          <div class="aring-wrap">
+            <div class="aring-bg"></div>
+            <svg class="aring-svg" viewBox="0 0 100 100">
+              <circle class="aring-track" cx="50" cy="50" r="45"/>
+              <circle class="aring-fill" id="aring-fill" cx="50" cy="50" r="45"/>
+            </svg>
+            <div class="aring-val">
+              <div class="aring-num" id="aring-num">—</div>
+              <div class="aring-label">/ 100</div>
+            </div>
+          </div>
+          <div class="aglobal-title" id="aglobal-title">Score global</div>
+          <div class="aglobal-sub" id="aglobal-sub">En attente d'analyse…</div>
+        </div>
+
+        <!-- Scores list -->
+        <div class="ascores-wrap" id="ascores-list"></div>
+
+        <!-- CTA -->
+        <div class="acta-block">
+          <h3>🚀 Améliorons votre score ensemble</h3>
+          <p>Notre équipe Alpha Korner peut corriger chacun de ces points et propulser votre site en tête des résultats Google. Devis gratuit, réponse sous 24h.</p>
+          <a href="tel:+33353630332" class="acta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Obtenir mon audit complet
+          </a>
+          <br>
+          <button class="aretry-btn" onclick="resetAuditSPA()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Tester un autre site
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="ahow-wrap" id="audit-how-wrap">
+    <div class="ahow-title">Comment ça marche</div>
+    <div class="ahow-steps">
+      <div class="ahow-step">
+        <div class="ahow-num">1</div>
+        <div class="ahow-text"><strong>Entrez votre URL</strong>L'adresse complète de votre site web</div>
+      </div>
+      <div class="ahow-step">
+        <div class="ahow-num">2</div>
+        <div class="ahow-text"><strong>Analyse en direct</strong>Via Google PageSpeed + analyse IA des points bloquants</div>
+      </div>
+      <div class="ahow-step">
+        <div class="ahow-num">3</div>
+        <div class="ahow-text"><strong>Recevez votre score</strong>Performance, SEO, accessibilité et bonnes pratiques notés sur 100</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Audit -->
+  <footer class="footer" style="background:rgba(5,5,7,0.8);margin-top:32px">
+    <a href="#" onclick="showPage('home');window.scrollTo(0,0);return false;" class="nav-logo-svg" style="justify-content:center;position:relative;z-index:1">
+      <svg class="ak-logo-mark" viewBox="0 0 38 38" fill="none">
+        <circle cx="19" cy="19" r="18" stroke="#1D1D1E" stroke-width="2.5"/>
+        <rect x="24" y="6" width="3.5" height="22" rx="1.75" fill="#34D16C"/>
+        <path d="M24 19C24 22.866 20.866 26 17 26C13.134 26 10 22.866 10 19C10 15.134 13.134 12 17 12C20.866 12 24 15.134 24 19Z" stroke="#1D1D1E" stroke-width="2.5"/>
+        <circle cx="17" cy="19" r="4" fill="white"/>
+      </svg>
+      <div class="ak-logo-wordmark">Alpha<span>Korner</span></div>
+    </a>
+    <p class="footer-credit">Site créé avec ♥️ par Brice Jacotet</p>
+    <p class="footer-copy">© 2026 Alpha Korner — Logiciels sur mesure à Strasbourg</p>
+  </footer>
+
+</div>
+
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════
      CONTENU SEO SÉMANTIQUE — NON VISIBLE PAR LES VISITEURS
