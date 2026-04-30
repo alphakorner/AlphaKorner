@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Oops — Page introuvable | Alpha Korner</title>
+<meta name="description" content="La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil ou contactez Alpha Korner.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://alpha-korner.com/">
+<meta name="theme-color" content="#34D16C">
+
+<!-- PERFORMANCE & FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --green: #34D16C;
+  --green-light: rgba(52,209,108,0.12);
+  --green-mid:   rgba(52,209,108,0.25);
+  --bg:   #050507;
+  --bg2:  #0a0a0d;
+  --txt:  #ffffff;
+  --txt2: rgba(255,255,255,0.65);
+  --border: rgba(255,255,255,0.08);
+  --border-glow: rgba(52,209,108,0.20);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* ── Fluidité scroll max ── */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+  scroll-behavior: smooth;
+}
+html { scroll-padding-top: 90px; }
+body {
+  display: flex; flex-direction: column;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
+}
+
+/* ━━━ Background animé global ━━━ */
+.bg-gradient {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(52,209,108,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 85% 80%, rgba(52,209,108,0.08) 0%, transparent 55%),
+    linear-gradient(170deg, #061a0e 0%, #071510 35%, #040d08 70%, #050507 100%);
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+}
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(52,209,108,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52,209,108,0.10) 1px, transparent 1px);
+  background-size: 52px 52px;
+  -webkit-mask: radial-gradient(ellipse 95% 90% at 50% 38%, black 0%, black 30%, transparent 80%);
+  mask:         radial-gradient(ellipse 95% 90% at 50% 38%, black 0%, black 30%, transparent 80%);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Animation keyframes */
+@keyframes float-gentle { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes pulse        { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+@keyframes slide-down   { from{transform:translateY(-12px);opacity:0} to{transform:translateY(0);opacity:1} }
+@keyframes fade-up      { from{transform:translateY(20px);opacity:0;filter:blur(8px)} to{transform:translateY(0);opacity:1;filter:blur(0)} }
+@keyframes gradient-shift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes btn-glow     {
+  0%,100%{box-shadow: 0 0 4px rgba(52,209,108,0.30), 0 4px 16px rgba(52,209,108,0.20)}
+  50%    {box-shadow: 0 0 18px rgba(52,209,108,0.55), 0 8px 28px rgba(52,209,108,0.38)}
+}
+@keyframes spin-slow    { to { transform: rotate(360deg); } }
+
+/* ━━━ Navbar ━━━ */
+.navbar {
+  position: relative; z-index: 10;
+  display: flex;
+  padding: 14px 22px;
+  background: rgba(10,10,13,0.72);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  animation: slide-down 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.nav-inner {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--txt);
+}
+.nav-brand-logo {
+  width: 36px; height: 36px; flex-shrink: 0;
+}
+.nav-name {
+  font-size: 17px; font-weight: 800;
+  letter-spacing: -0.6px; line-height: 1;
+}
+.nav-name span { color: var(--green); }
+
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.nav-btn {
+  text-decoration: none; color: var(--txt);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: -0.2px;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s, background 0.2s;
+  cursor: pointer; white-space: nowrap;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.10); transform: translateY(-1px); }
+.nav-btn-call {
+  background: var(--green); border-color: transparent; color: #fff;
+  box-shadow: 0 4px 16px rgba(52,209,108,0.30);
+  animation: btn-glow 3.2s ease-in-out infinite;
+}
+.nav-btn-call:hover { box-shadow: 0 8px 28px rgba(52,209,108,0.45); transform: scale(1.03) translateY(-1px); }
+
+@media (max-width: 480px) {
+  .nav-btn { padding: 8px 12px; font-size: 11.5px; }
+  .nav-name { font-size: 15px; }
+}
+
+/* ━━━ Main 404 ━━━ */
+.main {
+  flex: 1;
+  position: relative; z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(28px, 6vw, 60px) 22px;
+}
+.card {
+  max-width: 600px; width: 100%;
+  text-align: center;
+  position: relative;
+  animation: fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* Glyph 404 — gradient animé */
+.err-glyph {
+  font-size: clamp(110px, 22vw, 220px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -8px;
+  background: linear-gradient(90deg, var(--green) 0%, #5fffaa 30%, var(--green) 60%, #1aad55 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s linear infinite;
+  margin-bottom: -10px;
+  text-shadow: 0 0 80px rgba(52,209,108,0.30);
+  filter: drop-shadow(0 8px 30px rgba(52,209,108,0.25));
+}
+
+/* Satellite SVG — flotte */
+.err-emoji-wrap {
+  margin: 6px 0 14px;
+  display: flex;
+  justify-content: center;
+  animation: float-gentle 3.5s ease-in-out infinite;
+}
+.err-emoji-svg {
+  width: 64px; height: 64px;
+  filter: drop-shadow(0 6px 20px rgba(52,209,108,0.40));
+}
+
+.err-title {
+  font-size: clamp(20px, 3.6vw, 30px);
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.err-desc {
+  font-size: clamp(13px, 1.7vw, 15px);
+  color: var(--txt2);
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0 auto 30px;
+}
+.err-desc strong { color: var(--txt); font-weight: 700; }
+
+.err-actions {
+  display: flex; gap: 12px;
+  justify-content: center; flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.btn-primary, .btn-secondary {
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800; letter-spacing: -0.3px;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: transform 0.22s cubic-bezier(0.22,1,0.36,1), box-shadow 0.22s, background 0.22s;
+  cursor: pointer; border: none;
+  font-family: inherit;
+  position: relative; overflow: hidden;
+  white-space: nowrap;
+}
+.btn-primary::before, .btn-secondary::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,rgba(255,255,255,0.22) 0%,transparent 55%);
+  pointer-events:none;
+}
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(52,209,108,0.30);
+  animation: btn-glow 3s ease-in-out infinite;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(52,209,108,0.50);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  color: var(--txt);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-2px);
+  border-color: var(--border-glow);
+}
+
+/* ── Help card glassmorphic ── */
+.err-help {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin-top: 24px;
+  text-align: left;
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.err-help::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(160deg,rgba(255,255,255,0.06) 0%,transparent 50%);
+  pointer-events:none;
+}
+.err-help-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative; z-index: 1;
+}
+.err-help-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  position: relative; z-index: 1;
+}
+.err-help-list li {
+  font-size: 13px;
+  color: var(--txt2);
+  padding: 7px 0 7px 24px;
+  position: relative;
+  line-height: 1.55;
+}
+.err-help-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(52,209,108,0.18);
+  border: 1px solid var(--green);
+}
+.err-help-list li::after {
+  content: '✓';
+  position: absolute;
+  left: 3px; top: 9px;
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1;
+}
+.err-help-list a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+.err-help-list a:hover {
+  text-decoration: underline;
+  color: #5fffaa;
+}
+
+/* Auto-redirect indicator */
+.auto-redirect {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(52,209,108,0.07);
+  border: 1px solid var(--green-mid);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--txt2);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.auto-redirect.visible { opacity: 1; }
+.auto-redirect-spinner {
+  width: 12px; height: 12px;
+  border: 2px solid rgba(52,209,108,0.25);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin-slow 1s linear infinite;
+}
+
+/* ━━━ Footer ━━━ */
+.footer {
+  position: relative; z-index: 10;
+  background: rgba(10,10,13,0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 20px 22px;
+  text-align: center;
+}
+.footer-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.footer-link {
+  font-size: 12px;
+  color: var(--txt2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--green); }
+.footer-copy {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.55;
+}
+.footer-copy strong{color:var(--green)}
+
+@media(max-width: 600px) {
+  .err-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .err-help { padding: 18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-grid"></div>
+
+<!-- ━━━ NAVBAR ━━━ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <svg class="nav-brand-logo" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="19" r="18" stroke="#ffffff" stroke-width="2.5"/>
+        <rect x="24" y="6" width="3.5" height="22" rx="1.75" fill="#34D16C"/>
+        <path d="M24 19C24 22.866 20.866 26 17 26C13.134 26 10 22.866 10 19C10 15.134 13.134 12 17 12C20.866 12 24 15.134 24 19Z" stroke="#ffffff" stroke-width="2.5"/>
+        <circle cx="17" cy="19" r="4" fill="#ffffff"/>
+      </svg>
+      <div class="nav-name">Alpha<span>Korner</span></div>
+    </a>
+    <div class="nav-actions">
+      <a href="/" class="nav-btn">← Retour</a>
+      <a href="tel:+33353630332" class="nav-btn nav-btn-call">📞 03.53.63.03.32</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ━━━ MAIN 404 ━━━ -->
+<main class="main">
+  <div class="card">
+    <div class="err-glyph">404</div>
+    <div class="err-emoji-wrap">
+      <svg class="err-emoji-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="satGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#34D16C"/>
+            <stop offset="100%" stop-color="#0a8c3e"/>
+          </linearGradient>
+        </defs>
+        <!-- Satellite body -->
+        <rect x="22" y="22" width="20" height="20" rx="4" fill="url(#satGrad)"/>
+        <rect x="26" y="26" width="12" height="6" rx="1.5" fill="rgba(255,255,255,0.85)"/>
+        <circle cx="32" cy="38" r="2" fill="rgba(255,255,255,0.85)"/>
+        <!-- Solar panels -->
+        <rect x="6" y="26" width="14" height="12" rx="1" fill="rgba(52,209,108,0.30)" stroke="#34D16C" stroke-width="1.2"/>
+        <line x1="11" y1="26" x2="11" y2="38" stroke="#34D16C" stroke-width="0.8"/>
+        <line x1="15" y1="26" x2="15" y2="38" stroke="#34D16C" stroke-width="0.8"/>
+        <rect x="44" y="26" width="14" height="12" rx="1" fill="rgba(52,209,108,0.30)" stroke="#34D16C" stroke-width="1.2"/>
+        <line x1="49" y1="26" x2="49" y2="38" stroke="#34D16C" stroke-width="0.8"/>
+        <line x1="53" y1="26" x2="53" y2="38" stroke="#34D16C" stroke-width="0.8"/>
+        <!-- Antenna + signal -->
+        <line x1="32" y1="22" x2="32" y2="14" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="32" cy="12" r="2" fill="#34D16C">
+          <animate attributeName="r" values="2;3;2" dur="1.6s" repeatCount="indefinite"/>
+        </circle>
+        <path d="M 28 10 Q 32 6 36 10" stroke="#34D16C" stroke-width="1.2" fill="none" opacity="0.6">
+          <animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.6s" repeatCount="indefinite"/>
+        </path>
+        <path d="M 25 8 Q 32 1 39 8" stroke="#34D16C" stroke-width="1.2" fill="none" opacity="0.4">
+          <animate attributeName="opacity" values="0.1;0.5;0.1" dur="1.6s" begin="0.3s" repeatCount="indefinite"/>
+        </path>
+      </svg>
+    </div>
+    <h1 class="err-title">Oops... cette page n'existe pas</h1>
+    <p class="err-desc">
+      La page que vous cherchez a peut-être été <strong>déplacée</strong>, <strong>renommée</strong>
+      ou <strong>supprimée</strong>. Pas d'inquiétude — il y a plein d'autres choses à voir sur Alpha Korner.
+    </p>
+
+    <div class="err-actions">
+      <a href="/" class="btn-primary">🏠 Retour à l'accueil</a>
+      <a href="mailto:contact@alphakorner.fr?subject=Probl%C3%A8me%20rencontr%C3%A9%20sur%20le%20site" class="btn-secondary">✉️ Nous contacter</a>
+    </div>
+
+    <div class="err-help">
+      <div class="err-help-title">💡 Que faire maintenant ?</div>
+      <ul class="err-help-list">
+        <li>Vérifiez que l'URL est correctement orthographiée dans votre barre d'adresse</li>
+        <li>Retournez à <a href="/">l'accueil</a> pour explorer nos services</li>
+        <li>Faites un <a href="/#/audit">audit gratuit de votre site</a> en 2 minutes</li>
+        <li>Appelez-nous au <a href="tel:+33353630332">03.53.63.03.32</a> ou écrivez à <a href="mailto:contact@alphakorner.fr">contact@alphakorner.fr</a></li>
+      </ul>
+    </div>
+
+    <div class="auto-redirect" id="autoRedirect">
+      <span class="auto-redirect-spinner"></span>
+      <span id="autoRedirectText">Redirection automatique dans 20s…</span>
+    </div>
+  </div>
+</main>
+
+<!-- ━━━ FOOTER ━━━ -->
+<footer class="footer">
+  <div class="footer-row">
+    <a href="/" class="footer-link">Accueil</a>
+    <a href="/#/audit" class="footer-link">Audit gratuit</a>
+    <a href="/#/services" class="footer-link">Services</a>
+    <a href="mailto:contact@alphakorner.fr" class="footer-link">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 <strong>Alpha Korner</strong> — Logiciels sur mesure à Strasbourg · 15 Route de Hausbergen, 67300 Schiltigheim</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  AUTO-REDIRECTION INTELLIGENTE
+//  Si l'URL ressemble à une route connue → redirection silencieuse
+//  Sinon → on affiche la 404 stylée + redirection auto à 20s
+// ═══════════════════════════════════════════════════════════════
+(function(){
+  const path = (window.location.pathname || '').toLowerCase();
+
+  // Mapping URL → route hash
+  const routes = [
+    { match: /audit/,        target: '#/audit' },
+    { match: /demo/,         target: '#/demo' },
+    { match: /service/,      target: '#/services' },
+    { match: /contact/,      target: '#/' },
+    { match: /accueil|home/, target: '#/' }
+  ];
+
+  for (const route of routes) {
+    if (route.match.test(path)) {
+      // Redirection immédiate (silencieuse)
+      window.location.replace('/' + route.target);
+      return;
+    }
+  }
+
+  // Pas de match → on lance le compte à rebours pour redirection automatique
+  const ar = document.getElementById('autoRedirect');
+  const ar2 = document.getElementById('autoRedirectText');
+  if (ar && ar2) {
+    setTimeout(() => ar.classList.add('visible'), 600);
+    let secs = 20;
+    const tick = setInterval(() => {
+      secs--;
+      ar2.textContent = `Redirection automatique dans ${secs}s…`;
+      if (secs <= 0) {
+        clearInterval(tick);
+        window.location.replace('/');
+      }
+    }, 1000);
+  }
+})();
+
+// ═══════════════════════════════════════════════════════════════
+//  SUPABASE TRACKING — Trace les 404 dans la table `visits`
+//  Permet à l'admin de voir QUI tombe sur des URL cassées.
+// ═══════════════════════════════════════════════════════════════
+(function track404(){
+  'use strict';
+  const SUPA = {
+    url: 'https://uzjrtqqruufpizvrtpti.supabase.co',
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV6anJ0cXFydXVmcGl6dnJ0cHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0NjAxMzIsImV4cCI6MjA5MzAzNjEzMn0.eIN_DxZgFHd5no-P_BnLQQD_9fZrXZxUb8jKxmmdMv4'
+  };
+
+  function getDevice(){
+    const ua = navigator.userAgent || '';
+    let os = 'inconnu';
+    if (/Windows NT 10/i.test(ua))           os = 'Windows 10/11';
+    else if (/Windows/i.test(ua))            os = 'Windows';
+    else if (/Android ([\d.]+)/i.test(ua))   os = 'Android ' + RegExp.$1;
+    else if (/iPhone OS ([\d_]+)/i.test(ua)) os = 'iOS ' + RegExp.$1.replace(/_/g, '.');
+    else if (/Mac OS X ([\d_]+)/i.test(ua))  os = 'macOS ' + RegExp.$1.replace(/_/g, '.');
+    else if (/Linux/i.test(ua))              os = 'Linux';
+    let browser = 'inconnu', version = '';
+    if (/Edg\/([\d.]+)/i.test(ua))            { browser = 'Edge';     version = RegExp.$1; }
+    else if (/Chrome\/([\d.]+)/i.test(ua))    { browser = 'Chrome';   version = RegExp.$1; }
+    else if (/Safari\/([\d.]+)/i.test(ua))    { browser = 'Safari';   version = RegExp.$1; }
+    else if (/Firefox\/([\d.]+)/i.test(ua))   { browser = 'Firefox';  version = RegExp.$1; }
+    let device = 'Desktop';
+    if (/iPhone/i.test(ua))                              device = 'iPhone';
+    else if (/iPad/i.test(ua))                           device = 'iPad';
+    else if (/Android/i.test(ua) && /Mobile/i.test(ua))  device = 'Mobile Android';
+    else if (/Android/i.test(ua))                        device = 'Tablette Android';
+    else if (/Mobile|Phone/i.test(ua))                   device = 'Mobile';
+    return { os, browser, version, device, ua };
+  }
+
+  async function getIP(){
+    try {
+      const r = await fetch('https://ipapi.co/json/', { cache:'no-store' });
+      if (!r.ok) return null;
+      const d = await r.json();
+      return {
+        ip: d.ip || null, city: d.city || null,
+        region: d.region || null,
+        country: (d.country_name || d.country || null),
+        org: d.org || null, timezone: d.timezone || null
+      };
+    } catch(e) { return null; }
+  }
+
+  async function send404(){
+    const dev = getDevice();
+    const ip  = await getIP();
+    const sessionId = '404_' + Date.now() + '_' + Math.random().toString(36).slice(2,8);
+    const payload = {
+      session_id:  sessionId,
+      started_at:  new Date().toISOString(),
+      last_seen:   new Date().toISOString(),
+      first_page:  window.location.href,
+      referrer:    document.referrer || 'direct',
+      ip:          ip?.ip || null,
+      city:        ip?.city || null,
+      region:      ip?.region || null,
+      country:     ip?.country || null,
+      org:         ip?.org || null,
+      timezone:    ip?.timezone || null,
+      device_type: dev.device,
+      os:          dev.os,
+      browser:     dev.browser,
+      browser_ver: dev.version,
+      lang:        navigator.language || null,
+      screen:      (screen.width||'?') + '×' + (screen.height||'?'),
+      viewport:    (innerWidth||'?') + '×' + (innerHeight||'?'),
+      ua:          dev.ua,
+      path:        [{ label: '404 — ' + window.location.pathname, at: Date.now() }],
+      page_count:  1,
+      duration_sec: 0,
+      arrival_sent: false,
+      recap_sent:   false,
+      updated_at:   new Date().toISOString()
+    };
+    try {
+      await fetch(`${SUPA.url}/rest/v1/visits?on_conflict=session_id`, {
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json',
+          'apikey':        SUPA.key,
+          'Authorization': `Bearer ${SUPA.key}`,
+          'Prefer':        'resolution=merge-duplicates,return=minimal'
+        },
+        body: JSON.stringify(payload),
+        keepalive: true
+      });
+    } catch(e) { /* silencieux */ }
+  }
+
+  // Lance le tracking en différé pour ne pas bloquer le rendu
+  setTimeout(send404, 1000);
+})();
+</script>
+
+</body>
+</html>
